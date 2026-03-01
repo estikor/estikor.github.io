@@ -1,0 +1,1346 @@
+
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>profile.php - Reels Export</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+          body { font-family: system-ui, sans-serif; padding: 20px; background: #f0f2f5; }
+          .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 20px;}
+          table { border-collapse: collapse; width: 100%; }
+          th, td { border-bottom: 1px solid #ddd; padding: 12px; text-align: left; }
+          th { cursor: pointer; background-color: #f8f9fa; user-select: none; transition: background 0.2s; }
+          th:hover { background-color: #e2e5e9; }
+          img { width: 80px; border-radius: 5px; object-fit: cover; }
+          a { color: #0866FF; text-decoration: none; font-weight: 500; }
+          a:hover { text-decoration: underline; }
+          .order-col { font-weight: bold; color: #555; }
+          .chart-container { width: 100%; max-width: 1000px; margin: 0 auto 30px auto; }
+        </style>
+        <script>
+          let currentSortCol = -1;
+          let currentSortDir = 'asc';
+  
+          function sortTable(n) {
+            const table = document.getElementById("reelsTable");
+            const rows = Array.from(table.rows).slice(1);
+            if (currentSortCol === n) currentSortDir = currentSortDir === 'asc' ? 'desc' : 'asc';
+            else { currentSortCol = n; currentSortDir = 'asc'; }
+            
+            rows.sort((a, b) => {
+              let x = a.cells[n].getAttribute('data-val') || a.cells[n].innerText;
+              let y = b.cells[n].getAttribute('data-val') || b.cells[n].innerText;
+              let xNum = Number(x); let yNum = Number(y);
+              let isNum = !isNaN(xNum) && !isNaN(yNum) && x.trim() !== '' && y.trim() !== '';
+              if (isNum) return currentSortDir === 'asc' ? xNum - yNum : yNum - xNum;
+              return currentSortDir === 'asc' ? x.localeCompare(y) : y.localeCompare(x);
+            });
+            const tbody = table.querySelector("tbody") || table;
+            rows.forEach(row => tbody.appendChild(row));
+          }
+        </script>
+      </head>
+      <body>
+        <div class="container">
+          <h2>profile.php - Reels Performance (Logarithmic)</h2>
+          <div class="chart-container"><canvas id="viewsChart"></canvas></div>
+        </div>
+        <div class="container">
+          <h2>Exported Reels (157 total) - Page: profile.php</h2>
+          <table id="reelsTable">
+            <tr>
+              <th>Thumbnail</th>
+              <th onclick="sortTable(1)">Upload Order &#x21C5;</th>
+              <th onclick="sortTable(2)">Link &#x21C5;</th>
+              <th onclick="sortTable(3)">Raw Text Extract &#x21C5;</th>
+              <th onclick="sortTable(4)">View Count &#x21C5;</th>
+            </tr>
+    
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/640796892_1447567713447884_379942995962307995_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=1JFFFbKh03UQ7kNvwG20myC&_nc_oc=Adn3d_XOxh-L1VlSnB8Is__10VmM9uiMSL8PplLOR5Lt7EiLPO-PSe8oUqesxvkbzMsOOG5WWowtscLcudifK48b&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=cC62JTRKbDkxOtW0HvXrpg&_nc_ss=8&oh=00_AfvhRVouuaegMEtHOr8_GMVu_n5_DgftVjcE55i15fHr9Q&oe=69A9FE58" alt="thumb" /></td>
+              <td class="order-col" data-val="157">#157</td>
+              <td data-val="https://www.facebook.com/reel/1260646919495032"><a href="https://www.facebook.com/reel/1260646919495032" target="_blank">View Reel</a></td>
+              <td data-val="12K">12K</td>
+              <td data-val="12000"><strong>12,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/639985510_2086410242204716_2156434901543116021_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=pJxAyjilqJ4Q7kNvwEMrnwc&_nc_oc=AdlkVM0AJ-AYMmkefOX3BBkeJ0U1noWqTeVF1TlDZHKOzz1u07wkk7R1JrM0C3c7mvvgdqZq43MrcsCpsVUGyBpB&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=cC62JTRKbDkxOtW0HvXrpg&_nc_ss=8&oh=00_AfsrzL0K5TsCa1t5Y7Qcc77X1Vnhkdng5bj8VLeIe7X_RQ&oe=69A9E06A" alt="thumb" /></td>
+              <td class="order-col" data-val="156">#156</td>
+              <td data-val="https://www.facebook.com/reel/929259532853808"><a href="https://www.facebook.com/reel/929259532853808" target="_blank">View Reel</a></td>
+              <td data-val="68">68</td>
+              <td data-val="68"><strong>68</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/641668538_1620377099108618_1823678366904149462_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=111&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=2aQ75UaAunsQ7kNvwF7hN8m&_nc_oc=AdlTCrhl-nfdCMmPtu_Kfmg6maZF5Qc5_FHLsmMBSU55KuXSpBBFfrEsVxC5nXm0T67R3m-7Q9XzZEoCXk9hRudr&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=cC62JTRKbDkxOtW0HvXrpg&_nc_ss=8&oh=00_Afs4mfGPKp_xGhOLmGYOLhJ_gRy0-aCrwsPIMKVL_rWTdg&oe=69A9D695" alt="thumb" /></td>
+              <td class="order-col" data-val="155">#155</td>
+              <td data-val="https://www.facebook.com/reel/1235302411416691"><a href="https://www.facebook.com/reel/1235302411416691" target="_blank">View Reel</a></td>
+              <td data-val="3.7K">3.7K</td>
+              <td data-val="3700"><strong>3,700</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/641094565_916287104091541_1944166952459217263_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=RZ98hHSbSiQQ7kNvwFZWqbg&_nc_oc=Adla-LqdosHIJYIjgU9aOh4nfbig0m-SF4tQ7ow8Hj64UHGcDYDFYruTcoCqVbRafqD3mPnU85QjXyAJ68kZJpKm&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=cC62JTRKbDkxOtW0HvXrpg&_nc_ss=8&oh=00_Afu66Ii85n5zpSNTQJ4JS6Jon6Mi7aF96C5jeFpTfjZ4dw&oe=69A9FC0D" alt="thumb" /></td>
+              <td class="order-col" data-val="154">#154</td>
+              <td data-val="https://www.facebook.com/reel/1262673359130061"><a href="https://www.facebook.com/reel/1262673359130061" target="_blank">View Reel</a></td>
+              <td data-val="1.7K">1.7K</td>
+              <td data-val="1700"><strong>1,700</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.82787-10/639684785_18573662086030343_6047585651678601333_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=105&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=686ghTUb5WQQ7kNvwHkN-yC&_nc_oc=Adl0KxVoDIqzPGhSbhFxzUF_rSXGmNJCL1Tc9zvJymqoT1SV9WW9AmX09WHqgOdKaBAqsO4TtVwpmEB8xQDuoDHP&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=cC62JTRKbDkxOtW0HvXrpg&_nc_ss=8&oh=00_AfvT_CdHpH5stZwHkD_2SQ6Hj_UE-Js62teBgStBVWNrWg&oe=69A9F934" alt="thumb" /></td>
+              <td class="order-col" data-val="153">#153</td>
+              <td data-val="https://www.facebook.com/reel/2152868698814476"><a href="https://www.facebook.com/reel/2152868698814476" target="_blank">View Reel</a></td>
+              <td data-val="962">962</td>
+              <td data-val="962"><strong>962</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/633866024_1213042610898131_3454954298780654626_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=m4Bf-zEI87AQ7kNvwEJtBPr&_nc_oc=AdmIQP6oBCJesr9NJOBg69Jry_aokwcgk_H5JPpTF8G0cKefWcM8B1f4afQ-QXdV8fZs89EUPe6M4foY8UqUx9Ts&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=cC62JTRKbDkxOtW0HvXrpg&_nc_ss=8&oh=00_AfvsvZO41kh6HRXk38njDbtwfA5Xks6rM7ujA09W2BaOKw&oe=69AA0B3C" alt="thumb" /></td>
+              <td class="order-col" data-val="152">#152</td>
+              <td data-val="https://www.facebook.com/reel/847389474993949"><a href="https://www.facebook.com/reel/847389474993949" target="_blank">View Reel</a></td>
+              <td data-val="70">70</td>
+              <td data-val="70"><strong>70</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/629172744_1625339885159409_3902627338482330932_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=101&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=_s8NYOxwp0sQ7kNvwFjkedq&_nc_oc=AdnRG93rkeBklTufqedVg6hDv3AcZJU1kHrPjJtTjVEfJblCxcQhtlI85D5Wb5AigwV5aONb8R-ZG5l9KDSF_Yaj&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=cC62JTRKbDkxOtW0HvXrpg&_nc_ss=8&oh=00_Afsui9dVzyfrXtmOVCB7T9Li1JyNvzGThXVaz61I-LDiCw&oe=69A9E1C5" alt="thumb" /></td>
+              <td class="order-col" data-val="151">#151</td>
+              <td data-val="https://www.facebook.com/reel/1421844102926780"><a href="https://www.facebook.com/reel/1421844102926780" target="_blank">View Reel</a></td>
+              <td data-val="25K">25K</td>
+              <td data-val="25000"><strong>25,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/627636745_1530162731411895_8987181081177985702_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=i0iILYtPh0sQ7kNvwGXZzE2&_nc_oc=AdmM8RhJ263SOn0Me2yELFDTQf1qkFGdMrX9ZXNW_bnCOBadVVvMfQpOfXOsQFCphLhj9mBZpOjjeEdPUoIm6-Uw&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=cC62JTRKbDkxOtW0HvXrpg&_nc_ss=8&oh=00_AfuBHHpkIicMjPm2AKNrlOJU1BUVNZ1Mnvon2uw90K_DoQ&oe=69A9FE35" alt="thumb" /></td>
+              <td class="order-col" data-val="150">#150</td>
+              <td data-val="https://www.facebook.com/reel/1180373643909785"><a href="https://www.facebook.com/reel/1180373643909785" target="_blank">View Reel</a></td>
+              <td data-val="556">556</td>
+              <td data-val="556"><strong>556</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/629507072_1522390885529085_5105298928648392160_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=BPBZKvjBGgQQ7kNvwEiE4El&_nc_oc=AdkRSxgxZYFS2NsA_QzJZ2TbPX0nhdMTZMr7qxavzh51PcNczyv3b_1c8IZq6f3MdxrqtfkXvtFpSjlGTCJb8TjR&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=cC62JTRKbDkxOtW0HvXrpg&_nc_ss=8&oh=00_Afsn6vsYdLShBdI--ZJUd0ImKLvZ5ZCHtZAjopyBldmfOQ&oe=69AA054D" alt="thumb" /></td>
+              <td class="order-col" data-val="149">#149</td>
+              <td data-val="https://www.facebook.com/reel/1471299651086312"><a href="https://www.facebook.com/reel/1471299651086312" target="_blank">View Reel</a></td>
+              <td data-val="118">118</td>
+              <td data-val="118"><strong>118</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/628059729_4366416920347161_7458208859622624439_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=2je9UNpp2kQQ7kNvwGLgafJ&_nc_oc=AdngPeFfsLTzATU83b6I5XfyBbqoOTPRZuB-tyOq6kjf_-RXBIv0fr1Bzj4qZVF_786VaLDMDZDXzvRcNKxfCQd1&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=cC62JTRKbDkxOtW0HvXrpg&_nc_ss=8&oh=00_AftD8dDv3wfolMcR987Q6jhyOdldgYN2RMm_y8OTyL9klA&oe=69A9DBE0" alt="thumb" /></td>
+              <td class="order-col" data-val="148">#148</td>
+              <td data-val="https://www.facebook.com/reel/886321090780024"><a href="https://www.facebook.com/reel/886321090780024" target="_blank">View Reel</a></td>
+              <td data-val="228">228</td>
+              <td data-val="228"><strong>228</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/626273425_872422825592192_3798418400269595507_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=111&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=d1O04CXBBbsQ7kNvwFIIvpx&_nc_oc=AdkqvHNiofnfBsb_l__HfzSSe1XyWgs4YyXhp8mdE4XHh4-PksyDerEKah3_9b24M23rB6OpfRc0yTl9SHFYRi3R&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=VNyaV_rJpnV0H1qFOYp8rQ&_nc_ss=8&oh=00_AftNt78Lj1GHhhouLHyamkm4Pj5xY5BI1V0P4WrUxhPJGQ&oe=69A9F858" alt="thumb" /></td>
+              <td class="order-col" data-val="147">#147</td>
+              <td data-val="https://www.facebook.com/reel/820879367634081"><a href="https://www.facebook.com/reel/820879367634081" target="_blank">View Reel</a></td>
+              <td data-val="3K">3K</td>
+              <td data-val="3000"><strong>3,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/625336111_1275141137867887_4251793390308793355_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=100&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=raLhnS6JIFIQ7kNvwHooSQr&_nc_oc=Adl1wVjP_RQYfw-TXS2TlE_28mJQWkkWne5xRk4LFddMNkBDJgVF-bzGTJQbUeple_HfKI-zhV1ymBhO0IrQPvMm&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=VNyaV_rJpnV0H1qFOYp8rQ&_nc_ss=8&oh=00_AftSKnuNqa5o6Qp21CJ2hcnLlPFFe93SY-KtIE380RnVpQ&oe=69A9E580" alt="thumb" /></td>
+              <td class="order-col" data-val="146">#146</td>
+              <td data-val="https://www.facebook.com/reel/776231774920779"><a href="https://www.facebook.com/reel/776231774920779" target="_blank">View Reel</a></td>
+              <td data-val="2.8K">2.8K</td>
+              <td data-val="2800"><strong>2,800</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/625313676_25916904977999510_6974832511230927928_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=sZnzyPHwmFAQ7kNvwG8DXou&_nc_oc=AdkrQRTL3CgHtqig8yVovXBbQ141MOxZh8rZWRHe8OH5bY0VT33I1NdJtihn8cEHm-LSuSedY9fd6vnBumrn-acT&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=VNyaV_rJpnV0H1qFOYp8rQ&_nc_ss=8&oh=00_AfvnMxO6_n6bCkJ_mzREbLnsQSBdY_OsIBtDsS4GCm6Z3w&oe=69A9EBC6" alt="thumb" /></td>
+              <td class="order-col" data-val="145">#145</td>
+              <td data-val="https://www.facebook.com/reel/1441509334360892"><a href="https://www.facebook.com/reel/1441509334360892" target="_blank">View Reel</a></td>
+              <td data-val="1.5K">1.5K</td>
+              <td data-val="1500"><strong>1,500</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/627154398_1272242101441004_4811426298158581838_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=mVP84cL9NQQQ7kNvwHJ4HS4&_nc_oc=Adknmps8RLcxG2VoFzcDlMsBZbLDteJdTkPNElv7F0kayS6Es6CCuJyEyDu_6XaedbA3CRsW5Kvr_8SRPRIeNHR6&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=VNyaV_rJpnV0H1qFOYp8rQ&_nc_ss=8&oh=00_Afs-ydVWmnU56rJUpUt0SfIv_TelgubbAQq-YsH04oUvGA&oe=69A9EB71" alt="thumb" /></td>
+              <td class="order-col" data-val="144">#144</td>
+              <td data-val="https://www.facebook.com/reel/1214820583566477"><a href="https://www.facebook.com/reel/1214820583566477" target="_blank">View Reel</a></td>
+              <td data-val="2.5K">2.5K</td>
+              <td data-val="2500"><strong>2,500</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/625159737_1253361939998669_993793100706546621_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=slMT6_Ey7ToQ7kNvwEJuZGj&_nc_oc=AdlQsNY_3Uhdt7CP-IKlYc3IdEtVbWDY9RZI7xgCQlaQMJ3PDv8lTltMywoa53xlPHunS-jDwEVo6Zxyu1_PvXTj&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=VNyaV_rJpnV0H1qFOYp8rQ&_nc_ss=8&oh=00_AfumHnQWBbgaE5Rh-HEwU8OdC-IZ9eB9S8LKPPaB_mL9MA&oe=69A9E45D" alt="thumb" /></td>
+              <td class="order-col" data-val="143">#143</td>
+              <td data-val="https://www.facebook.com/reel/1511769686589508"><a href="https://www.facebook.com/reel/1511769686589508" target="_blank">View Reel</a></td>
+              <td data-val="3.8K">3.8K</td>
+              <td data-val="3800"><strong>3,800</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/624463827_886652844355809_3236562220576402939_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=UIVFNeoN9G8Q7kNvwHzb6uO&_nc_oc=Adme5KDe7hXJxqxspDVBAwnzi7nnXLq-h87EN1oTbW3notvdh5uqvuEKkJGyVTAvM94qWPRLV9hpcZdAS180RfIG&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=VNyaV_rJpnV0H1qFOYp8rQ&_nc_ss=8&oh=00_AfvqttUvJ00VpYFrPirukI-TAxXGITY8F9vSCJ9NMRuvGQ&oe=69AA0333" alt="thumb" /></td>
+              <td class="order-col" data-val="142">#142</td>
+              <td data-val="https://www.facebook.com/reel/1395508022045076"><a href="https://www.facebook.com/reel/1395508022045076" target="_blank">View Reel</a></td>
+              <td data-val="190">190</td>
+              <td data-val="190"><strong>190</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/623831775_2008288126482510_4417898227561361324_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=J35So_1mqBQQ7kNvwGRb-O7&_nc_oc=AdnQvmOgDQNnbR8WGiloc23X6FEDKYPpdqE4sI_8yIYxUH-IkOQGg2jG7SBjZwv_t-KkO3diZWeKDxvs5cQyYPqh&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=VNyaV_rJpnV0H1qFOYp8rQ&_nc_ss=8&oh=00_Afs2DfjU6XfSgRvG213HvEwhzd9IHQ79pLUkdX8WKp8_7A&oe=69A9F5AD" alt="thumb" /></td>
+              <td class="order-col" data-val="141">#141</td>
+              <td data-val="https://www.facebook.com/reel/1229725159138116"><a href="https://www.facebook.com/reel/1229725159138116" target="_blank">View Reel</a></td>
+              <td data-val="1K">1K</td>
+              <td data-val="1000"><strong>1,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/623303163_1946829909571764_4300161881110736370_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=111&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=zbYsnxF0bhUQ7kNvwFIaZdj&_nc_oc=AdmbJqQmo5bYqaOBkEtwJB1p5eGUY-aCOJQyKPu2smKDSb26lpLc0zjoOeXaukWauHPIhBEKVUTj43lJuEZldR21&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=VNyaV_rJpnV0H1qFOYp8rQ&_nc_ss=8&oh=00_AfsyLfTEPHLcyNcdNcILFkEDoEQHaciPLAeNV3qH5n9png&oe=69AA03D4" alt="thumb" /></td>
+              <td class="order-col" data-val="140">#140</td>
+              <td data-val="https://www.facebook.com/reel/1411883127006121"><a href="https://www.facebook.com/reel/1411883127006121" target="_blank">View Reel</a></td>
+              <td data-val="3.3K">3.3K</td>
+              <td data-val="3300"><strong>3,300</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/622687925_1944301626437978_7500517056848221910_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=102&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=C7RafQsWthcQ7kNvwFwRvQg&_nc_oc=Adk9WG7quPxNlSyMnIGzJYQyRRGSJJ0CxWCA54jLib6xbKWsQXgtC0EFcq5ZYR2rv5PklzvDLPOIHHqoJE4BzE2K&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=VNyaV_rJpnV0H1qFOYp8rQ&_nc_ss=8&oh=00_Aft2vmCD9SwdmxaowMau9bMBjGErUkEqXoPlapxLNWxDKw&oe=69A9FD75" alt="thumb" /></td>
+              <td class="order-col" data-val="139">#139</td>
+              <td data-val="https://www.facebook.com/reel/1217605093893060"><a href="https://www.facebook.com/reel/1217605093893060" target="_blank">View Reel</a></td>
+              <td data-val="1.7K">1.7K</td>
+              <td data-val="1700"><strong>1,700</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/621321050_1274552138064560_820267918195416954_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=VXRu-UOa9QMQ7kNvwH8zTsT&_nc_oc=AdlwIDdZ89yREUmJkEghLCoigisRzlkHWzmyzjee9I2mF1hQjS5XaFKBrMLB9Ve5MlVWW12QcT8UZPsLux3BUFPq&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=VNyaV_rJpnV0H1qFOYp8rQ&_nc_ss=8&oh=00_AfsQIGXZvve2X4rNblPxI4-tva6ipSW-vDccPTB9TqTLQA&oe=69A9F539" alt="thumb" /></td>
+              <td class="order-col" data-val="138">#138</td>
+              <td data-val="https://www.facebook.com/reel/1372564954195121"><a href="https://www.facebook.com/reel/1372564954195121" target="_blank">View Reel</a></td>
+              <td data-val="1.9K">1.9K</td>
+              <td data-val="1900"><strong>1,900</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/620934856_1263819375681893_3823009353454607583_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=bArn2BURwJ4Q7kNvwE2OglJ&_nc_oc=AdkaZoGYlbGtG7gyiQYEe9LqZmyfFIkGWjlnsJTWODjVBRJmwSeSTbsCIAQd9HLD0OCaJuXFlzEBDybkTbzVM4Dt&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=ZftO3Nv984PJX0B9nhnwyw&_nc_ss=8&oh=00_AfvV7OnHy7mcEFB37WqXWZ9DKhf1KSItgM2SgE46Avtdng&oe=69A9F558" alt="thumb" /></td>
+              <td class="order-col" data-val="137">#137</td>
+              <td data-val="https://www.facebook.com/reel/864147313087946"><a href="https://www.facebook.com/reel/864147313087946" target="_blank">View Reel</a></td>
+              <td data-val="2K">2K</td>
+              <td data-val="2000"><strong>2,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/619235376_1673450194063498_4082886255472794790_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=yV2muID4ubgQ7kNvwEoYPy3&_nc_oc=AdnxZJjofoKf4VaIWBtKWcqzl8TsI9g1ODCvY3sx3ljar19SVmKNoCotVDmQmAecamaIWSeBebt6fUTXQWP91mIq&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=ZftO3Nv984PJX0B9nhnwyw&_nc_ss=8&oh=00_AfuSs0AJwlUYwxNU5lveJCVLG4IogCyFR3tuoiVaE5hk1g&oe=69A9FE2C" alt="thumb" /></td>
+              <td class="order-col" data-val="136">#136</td>
+              <td data-val="https://www.facebook.com/reel/1982521019311750"><a href="https://www.facebook.com/reel/1982521019311750" target="_blank">View Reel</a></td>
+              <td data-val="3.4K">3.4K</td>
+              <td data-val="3400"><strong>3,400</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/618574933_861024766909154_3021533736138473967_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=aFMp98LFCUoQ7kNvwGLo0eJ&_nc_oc=AdkmUc1L2Ny0oMIiW5Ofuz7aZn0vHVCSW5Iv81Dcu8o8DePTqY8Eencil6poQHKD9ZvnOdd3oJCApfwTXbTikOou&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=ZftO3Nv984PJX0B9nhnwyw&_nc_ss=8&oh=00_Afs76toovyuIJxxh69G13fwW2o_YWWsD4rFp_fGgmjk_ow&oe=69AA03A0" alt="thumb" /></td>
+              <td class="order-col" data-val="135">#135</td>
+              <td data-val="https://www.facebook.com/reel/1419367759847735"><a href="https://www.facebook.com/reel/1419367759847735" target="_blank">View Reel</a></td>
+              <td data-val="8K">8K</td>
+              <td data-val="8000"><strong>8,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/616190883_1361744668598349_1838412711926346134_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=102&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=iSYUMrGmksoQ7kNvwFrUcpL&_nc_oc=Admvdi0oLqtRGCIOI4Pecp6tVBRhiIJbmvUvsdNykrWrwBvfTsftyfH9DeCzb2iFE_noBIoRKzmyKOc6r4i0YQQS&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=ZftO3Nv984PJX0B9nhnwyw&_nc_ss=8&oh=00_AfsHlm_Xv0Nqyp-H32mEGZXlz4cfN27K9yrlC89GdIPQvg&oe=69A9FC76" alt="thumb" /></td>
+              <td class="order-col" data-val="134">#134</td>
+              <td data-val="https://www.facebook.com/reel/3111396822402475"><a href="https://www.facebook.com/reel/3111396822402475" target="_blank">View Reel</a></td>
+              <td data-val="7.6K">7.6K</td>
+              <td data-val="7600"><strong>7,600</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/616015125_1618123589540008_5474749699608339174_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=100&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=kRVSsTTEvnwQ7kNvwERr-SD&_nc_oc=AdmpwiZ3Toe_JxdTxqQCvsfgGU7gbUtXxylQDR1sNLBoLT0WSMVRWF4OdlaiL22zY8Hbyl6RHcwgV1ybXQiaSy4p&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=ZftO3Nv984PJX0B9nhnwyw&_nc_ss=8&oh=00_AfsUGKXmUVR6VMCLlAPKogJ4ifPsiYrEw7QEH0NVtcJ4NQ&oe=69A9D7CF" alt="thumb" /></td>
+              <td class="order-col" data-val="133">#133</td>
+              <td data-val="https://www.facebook.com/reel/780953855016893"><a href="https://www.facebook.com/reel/780953855016893" target="_blank">View Reel</a></td>
+              <td data-val="509">509</td>
+              <td data-val="509"><strong>509</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/615832113_858118903598362_6808307425034107980_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=3Hq7wfaVEhQQ7kNvwE7fBBm&_nc_oc=AdmTECPHvfRVEGGLEUiEjX7gxIqHE-ru2n8FB8N_HhA7KjcbMVE0V0w7aE0LYRLTw9Q6NVNWctvfk3FXpJcj_HAy&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=ZftO3Nv984PJX0B9nhnwyw&_nc_ss=8&oh=00_AfuIhI4dNVKCWNzynBZ0IsPebKmP-3TdS-aIkBWi7yEMRg&oe=69AA04C0" alt="thumb" /></td>
+              <td class="order-col" data-val="132">#132</td>
+              <td data-val="https://www.facebook.com/reel/1775579059772106"><a href="https://www.facebook.com/reel/1775579059772106" target="_blank">View Reel</a></td>
+              <td data-val="564">564</td>
+              <td data-val="564"><strong>564</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/616551440_2856908184657035_1972400003142848405_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=101&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=BPg-rv2XNP0Q7kNvwERIhdm&_nc_oc=Adl74ma1wZS0vEJTIuhtXKEGLMr4Rk0cWN81SVKPm5Ej-duH-MHHoGW49cALLIiZYTrh5yYzINXi_uZG3rXWf0cR&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=ZftO3Nv984PJX0B9nhnwyw&_nc_ss=8&oh=00_Afv-GICS9hB7TRQLlkDPjRDCczeDQ_PajKp9pCAn0BEnkQ&oe=69AA05AB" alt="thumb" /></td>
+              <td class="order-col" data-val="131">#131</td>
+              <td data-val="https://www.facebook.com/reel/850930381155367"><a href="https://www.facebook.com/reel/850930381155367" target="_blank">View Reel</a></td>
+              <td data-val="204K">204K</td>
+              <td data-val="204000"><strong>204,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/612463101_1458592962503237_2974107689071497773_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=105&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=VsrJ9pIvi5AQ7kNvwFySlLX&_nc_oc=AdmlVb26TsPac-cJmSTfkEneSwlr7fYD6xWb3LxEcyQsZqJ_QhRmpprrcGJRqEN-noWeShn5iI4cgShTMlgAOQAd&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=ZftO3Nv984PJX0B9nhnwyw&_nc_ss=8&oh=00_Afv-kRjOpFwDDaQLq2Q61bE2jOcn3HXVqrT0nzSM4ToSGQ&oe=69A9E1D4" alt="thumb" /></td>
+              <td class="order-col" data-val="130">#130</td>
+              <td data-val="https://www.facebook.com/reel/2056773668455970"><a href="https://www.facebook.com/reel/2056773668455970" target="_blank">View Reel</a></td>
+              <td data-val="13K">13K</td>
+              <td data-val="13000"><strong>13,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/610979431_825871420454397_2043912425860925992_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=101&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=CVrZn9jFDEcQ7kNvwH4Go9j&_nc_oc=AdlemT5WTfrcqpcwQRBpiFNRgO5WKXWHVUJzNQcF57rTwLBHye6BAj80JBh9fm3UHgJ1muzj-eT2iXiCDTZWy-h4&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=ZftO3Nv984PJX0B9nhnwyw&_nc_ss=8&oh=00_Afv3sEI1plbEN-skY4JU8VUpxW5GvJ57FNAhxBijw9HCLQ&oe=69A9F412" alt="thumb" /></td>
+              <td class="order-col" data-val="129">#129</td>
+              <td data-val="https://www.facebook.com/reel/914600361020573"><a href="https://www.facebook.com/reel/914600361020573" target="_blank">View Reel</a></td>
+              <td data-val="1.6K">1.6K</td>
+              <td data-val="1600"><strong>1,600</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/612054103_1204584387791399_4237006268952948510_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=MEkcmqi1aUYQ7kNvwGN3jzG&_nc_oc=Adm5NdSgMyXmb8-LnHpTOehsZ0CdzgvzC0tJUFrajfHcLHe5jJZWCXzkrE9FT56J8Ipp9nqKaNda4ny6oLsMN0od&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=ZftO3Nv984PJX0B9nhnwyw&_nc_ss=8&oh=00_AfstDdueIUQukEVx47e6OSc91uu5qiZqZ0TzSGmPttOyqQ&oe=69A9EF50" alt="thumb" /></td>
+              <td class="order-col" data-val="128">#128</td>
+              <td data-val="https://www.facebook.com/reel/1201695468144479"><a href="https://www.facebook.com/reel/1201695468144479" target="_blank">View Reel</a></td>
+              <td data-val="1.6K">1.6K</td>
+              <td data-val="1600"><strong>1,600</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/610726302_1188259800129593_1289285048374906832_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=lzs1a12LcysQ7kNvwF7Q08l&_nc_oc=AdlwnoMEZd2VJoKdo-lzVa7Ac_l1MaLupJhnB2LrE6jln4AE2tiynQ3MfGzH2DPVADVxUnvMOmMWlsIEJyFF0fXn&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=bsfsC6STmNFsf6JbIfSlyQ&_nc_ss=8&oh=00_AftYTF62WjIH_Pqw4k1fzdcB2emxePxapDAb-uL4VoExSQ&oe=69AA0419" alt="thumb" /></td>
+              <td class="order-col" data-val="127">#127</td>
+              <td data-val="https://www.facebook.com/reel/4264303603842141"><a href="https://www.facebook.com/reel/4264303603842141" target="_blank">View Reel</a></td>
+              <td data-val="8.1K">8.1K</td>
+              <td data-val="8100"><strong>8,100</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/610567089_869615135781301_4440508801858235552_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=5MZVM15tTTIQ7kNvwEpQ6zS&_nc_oc=AdlJXBfpoVjdjbAg3-yjgnkdItlwaMdl1J0-45rL2MqVZxEuTbFU8qZ1dC0TSzBZUVVX4vfjOh0sAUFXczmccZO8&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=bsfsC6STmNFsf6JbIfSlyQ&_nc_ss=8&oh=00_AfuE8m9xqXb0SYV50G3pO8RgjtBNz3XOW9-UYsKxnwKy_A&oe=69A9DB42" alt="thumb" /></td>
+              <td class="order-col" data-val="126">#126</td>
+              <td data-val="https://www.facebook.com/reel/838198082539284"><a href="https://www.facebook.com/reel/838198082539284" target="_blank">View Reel</a></td>
+              <td data-val="698">698</td>
+              <td data-val="698"><strong>698</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/609950866_866118202679046_7206207832590629520_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=101&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=hslFN8ktW5wQ7kNvwFdZD9B&_nc_oc=AdkU9QpFd3bawzNCo5-9KmIaAgZaJF9ZlTjjCPXRNBqkYAHirrkAhYgZaShtNcB4SgTNnCxeLdxZJYb9I1kqvzx6&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=bsfsC6STmNFsf6JbIfSlyQ&_nc_ss=8&oh=00_Aft5YMwPRCQnx4vHaEu5iVQ0m3cH8tDc5lVGbUU8sRgTXA&oe=69AA0183" alt="thumb" /></td>
+              <td class="order-col" data-val="125">#125</td>
+              <td data-val="https://www.facebook.com/reel/760944139709829"><a href="https://www.facebook.com/reel/760944139709829" target="_blank">View Reel</a></td>
+              <td data-val="12K">12K</td>
+              <td data-val="12000"><strong>12,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/607962938_710399055257675_2811940694971632922_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=1GupsbP1XmQQ7kNvwE5Nivp&_nc_oc=Adm0PYO9MXiLKmXIyQlDvTDc3Pv1Zif89vRrRNk5L5XlLC_Hdd1xdURtzzxKey4t2yBtiKtM404v3x7q9FK-8Ha3&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=bsfsC6STmNFsf6JbIfSlyQ&_nc_ss=8&oh=00_AfsKUT22SGkXF4ITwME6o5KAlfpGEum3L1U3FiTZf0Sw5Q&oe=69A9D918" alt="thumb" /></td>
+              <td class="order-col" data-val="124">#124</td>
+              <td data-val="https://www.facebook.com/reel/1406620340978180"><a href="https://www.facebook.com/reel/1406620340978180" target="_blank">View Reel</a></td>
+              <td data-val="337">337</td>
+              <td data-val="337"><strong>337</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/609038658_1225730919509673_7482430897982437124_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=uLRQiM_fADcQ7kNvwFiut80&_nc_oc=AdnNDsLjZVcfRwm6SbYzZIOOZ5SPJe3yJqz_mIFtn7QAz9nFuPe1DKkG3FwZgqkV8S3wE19y6fa5F3Tsr5zx5EvL&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=bsfsC6STmNFsf6JbIfSlyQ&_nc_ss=8&oh=00_AfvjugPdQY3nSmXMeMYHfvj5Q1vIsOy8bid7Z9qBZAElmg&oe=69A9F007" alt="thumb" /></td>
+              <td class="order-col" data-val="123">#123</td>
+              <td data-val="https://www.facebook.com/reel/3400130790125115"><a href="https://www.facebook.com/reel/3400130790125115" target="_blank">View Reel</a></td>
+              <td data-val="12K">12K</td>
+              <td data-val="12000"><strong>12,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/607773949_25226496020384394_7348123122404087481_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=81e4T5N7towQ7kNvwHsBmnW&_nc_oc=AdnWQlBJH-t2r4a7RqWOPU1HwX84yAVShmASKAkdYRoJjPkWg7mQSpEXGUqTmPKt4QAFrBk1sCdaerFGY-8IM9Se&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=bsfsC6STmNFsf6JbIfSlyQ&_nc_ss=8&oh=00_Afv6es5bqTTXFB_QwC_3xOWPjdXO5fzDCRT8d82-OVO5VA&oe=69A9D576" alt="thumb" /></td>
+              <td class="order-col" data-val="122">#122</td>
+              <td data-val="https://www.facebook.com/reel/2290796231433350"><a href="https://www.facebook.com/reel/2290796231433350" target="_blank">View Reel</a></td>
+              <td data-val="11K">11K</td>
+              <td data-val="11000"><strong>11,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/607412189_766162936494092_294526078494704432_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=OyNpHvMUkDoQ7kNvwFnz8se&_nc_oc=AdlAGIYAcEY9cFL6xiSi81_6ztxmNpPeFFI7h6gt1T1OCPnu3zgyzTMOFKaO2FMmwALSaoD9avzr31lieIIEigr4&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=bsfsC6STmNFsf6JbIfSlyQ&_nc_ss=8&oh=00_Afu01f3cYpYiGDALervgvm45-MGBGObOOAu5CE-sgcdR6Q&oe=69A9DB78" alt="thumb" /></td>
+              <td class="order-col" data-val="121">#121</td>
+              <td data-val="https://www.facebook.com/reel/1199093251827417"><a href="https://www.facebook.com/reel/1199093251827417" target="_blank">View Reel</a></td>
+              <td data-val="411">411</td>
+              <td data-val="411"><strong>411</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/605874760_865712932705096_6390721632976695724_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=8v09V5IO3mIQ7kNvwHTVSa8&_nc_oc=AdleM5JMJuS1Ml_2Jz3aj_VJwE5_2Vllmxo3EGrJlbTIaeK3IBBKanusOFmn5r3zuZNrFE3Qwd9vCjq7-qmZfYXn&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=bsfsC6STmNFsf6JbIfSlyQ&_nc_ss=8&oh=00_Afv1UIuWW7LQCjl6FATZTTBZL23rxtTcM5jyqxfNUoB3wQ&oe=69A9F6D8" alt="thumb" /></td>
+              <td class="order-col" data-val="120">#120</td>
+              <td data-val="https://www.facebook.com/reel/1347353167163677"><a href="https://www.facebook.com/reel/1347353167163677" target="_blank">View Reel</a></td>
+              <td data-val="11K">11K</td>
+              <td data-val="11000"><strong>11,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/608170335_1165393772426694_4849434126643452313_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=101&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=w1NEeeVAvBgQ7kNvwEht-qq&_nc_oc=AdmjcAlnZNk9xMGQOKZtimkl7ZjsY07cnZ7KhgeLp5pg5r6eCJI4l9Z17K8PriqixL5hQIionpbCb28myE7tccmJ&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=bsfsC6STmNFsf6JbIfSlyQ&_nc_ss=8&oh=00_AfuLomE1wpD_Dd9HJEY2aNPkWiDGy10A0bZoNq-zDn0k8w&oe=69A9EDFE" alt="thumb" /></td>
+              <td class="order-col" data-val="119">#119</td>
+              <td data-val="https://www.facebook.com/reel/859836286777390"><a href="https://www.facebook.com/reel/859836286777390" target="_blank">View Reel</a></td>
+              <td data-val="3.3K">3.3K</td>
+              <td data-val="3300"><strong>3,300</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/605964783_4189076421361579_3738081765618629584_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=BT7b3O2bDKQQ7kNvwGvQapV&_nc_oc=AdnYPsqO2jjnVBL7f6M_U_UAQv-HCmuQ9HBmYcKG25zvqy4OsgsLyRAt5tcDwSWY8BYLZQpQEFf47pehtfHgQAYB&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=bsfsC6STmNFsf6JbIfSlyQ&_nc_ss=8&oh=00_AftzQ6eMMAuOfH9DyELJqZEKAvinOf_O5kFO7k67gN-VYw&oe=69A9EF26" alt="thumb" /></td>
+              <td class="order-col" data-val="118">#118</td>
+              <td data-val="https://www.facebook.com/reel/2019785075260493"><a href="https://www.facebook.com/reel/2019785075260493" target="_blank">View Reel</a></td>
+              <td data-val="5.2K">5.2K</td>
+              <td data-val="5200"><strong>5,200</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/604301620_1356060052987383_3023439012153359573_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=UmZrOOl_afwQ7kNvwFmxLlm&_nc_oc=Adm5VOIQjJJsk103xOOt5lBBGlsvo0OM6kI3g-WEAUzilB7-_dtWb_Clkhj2t3W13jp__y_w7X0yHLgmg231ABl6&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=RUlh-IbGTbVTEWtSLKij1w&_nc_ss=8&oh=00_Afu5p6LR2vEfO_OlDoOtm2C6GV2Q0Nz-frRNGxBua4i33g&oe=69AA05F6" alt="thumb" /></td>
+              <td class="order-col" data-val="117">#117</td>
+              <td data-val="https://www.facebook.com/reel/25687182164245684"><a href="https://www.facebook.com/reel/25687182164245684" target="_blank">View Reel</a></td>
+              <td data-val="37K">37K</td>
+              <td data-val="37000"><strong>37,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/604384892_2034012687175060_5267682874452821989_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=-l2Q7__iJSAQ7kNvwEqGb3a&_nc_oc=AdkPQeLZS0Gu62LmtWcW3k8BCGWS4UfTUz8NQqRqu9o_v4ZG6FGzQ1cPDO7_TtOBumr6HjHm0fJHeboBlE43ICPQ&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=RUlh-IbGTbVTEWtSLKij1w&_nc_ss=8&oh=00_Aftwek-ThqonDsSjJiaVa_GF9fEw46NZrOVkjUwDDXZt3w&oe=69A9D658" alt="thumb" /></td>
+              <td class="order-col" data-val="116">#116</td>
+              <td data-val="https://www.facebook.com/reel/1257708086183255"><a href="https://www.facebook.com/reel/1257708086183255" target="_blank">View Reel</a></td>
+              <td data-val="377">377</td>
+              <td data-val="377"><strong>377</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/584402886_1576344256600588_4514620284193944665_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=Rzyw-SwGm0YQ7kNvwFFGfbs&_nc_oc=AdlMsq243hS4m0OeJfkvKu9MNdCHhMStOye3cWuS6Hvrqsdbkyh1plyuqvkdNU8LLKSrqhQucrKyzysELk3pLSZy&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=RUlh-IbGTbVTEWtSLKij1w&_nc_ss=8&oh=00_AfsQGYPYVOxFyqi54IOIliqTZtXUGNtZM5v1DARHP2GTgQ&oe=69A9DABE" alt="thumb" /></td>
+              <td class="order-col" data-val="115">#115</td>
+              <td data-val="https://www.facebook.com/reel/1818450742193470"><a href="https://www.facebook.com/reel/1818450742193470" target="_blank">View Reel</a></td>
+              <td data-val="16K">16K</td>
+              <td data-val="16000"><strong>16,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/601445018_931208956741064_6017766008148623330_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=wDen2s8ynTQQ7kNvwEIB477&_nc_oc=AdlvWNQePIugUbALFF7cPJxCedBLsDnlzNFwhcd_IXwnAuO0FLVaP447C8Nk06My1T3n_cOelb7_RGOUTM-rZUz_&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=RUlh-IbGTbVTEWtSLKij1w&_nc_ss=8&oh=00_AfuRo7f9e5DVEwH5nIs4v51f8lGKhY8CnkUuHZ9iILeJmg&oe=69A9FC74" alt="thumb" /></td>
+              <td class="order-col" data-val="114">#114</td>
+              <td data-val="https://www.facebook.com/reel/2320756255058598"><a href="https://www.facebook.com/reel/2320756255058598" target="_blank">View Reel</a></td>
+              <td data-val="568">568</td>
+              <td data-val="568"><strong>568</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/602816050_2280646809108583_7233710769710253474_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=4fXfFn_yOzMQ7kNvwHfMnz2&_nc_oc=AdkqpABXyo-3I_vRn05zbBEh-LEf8-DHxr8q8VUwKV0X0pgOPDKMrODEh8xqHG3dfKybWqT-bC22-tdbxAEsSEoP&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=RUlh-IbGTbVTEWtSLKij1w&_nc_ss=8&oh=00_Afs_IUHyadZQGTZ0ADgu_jbgivO-9532pVlVO7gC4OT1pw&oe=69A9E189" alt="thumb" /></td>
+              <td class="order-col" data-val="113">#113</td>
+              <td data-val="https://www.facebook.com/reel/1192190785813205"><a href="https://www.facebook.com/reel/1192190785813205" target="_blank">View Reel</a></td>
+              <td data-val="254">254</td>
+              <td data-val="254"><strong>254</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/588713474_1493399551721010_5477635687181837912_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=CiUhvcQ7BN4Q7kNvwH4B2LM&_nc_oc=Adlp3aW2S7NLdZ73qadufqJXO8vhieqtYAW7yuFD-gnNxOX-fI-Bb-PCHFw84PFATJXMvmCHK1ArS0QrdCEDfWvB&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=RUlh-IbGTbVTEWtSLKij1w&_nc_ss=8&oh=00_AfsQM4AinCdLSNfcNAQgmocMLjsxNAUWnkwwI4nP_qJ5dA&oe=69A9E33D" alt="thumb" /></td>
+              <td class="order-col" data-val="112">#112</td>
+              <td data-val="https://www.facebook.com/reel/1139454968261390"><a href="https://www.facebook.com/reel/1139454968261390" target="_blank">View Reel</a></td>
+              <td data-val="4.5K">4.5K</td>
+              <td data-val="4500"><strong>4,500</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/588714784_1285464213684000_3454804482851653001_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=bWP0HPUFbgoQ7kNvwFY2iAu&_nc_oc=AdlLWZuwpi3Pu9bKw10pplRBhtL5cc9a_JT38X9osJiL9Fzu1JC_svvNc9Z20f8CeiHYlphZJwdg9JRk6on5cMjf&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=RUlh-IbGTbVTEWtSLKij1w&_nc_ss=8&oh=00_AfuMoN5pfXv0BZIqAoRfoM7GA00x4THE87eUXfPkiVO1Vw&oe=69A9E926" alt="thumb" /></td>
+              <td class="order-col" data-val="111">#111</td>
+              <td data-val="https://www.facebook.com/reel/843906828372181"><a href="https://www.facebook.com/reel/843906828372181" target="_blank">View Reel</a></td>
+              <td data-val="84K">84K</td>
+              <td data-val="84000"><strong>84,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/591167759_1321419530029067_234013795861618564_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=101&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=k4kraQRiO5oQ7kNvwFAPaK0&_nc_oc=AdnUfrMNspRs64XhCz3FWCBA78gHqasOItwxiQobaiad9GnGcaFtYKNBKZe7jt4haeagHMsGIxL_9VY0JI3xDbRf&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=RUlh-IbGTbVTEWtSLKij1w&_nc_ss=8&oh=00_AftNCwJcepNEPTVMqLte18jk80aieh2F_uPGKJvbdzcWhQ&oe=69A9EFE2" alt="thumb" /></td>
+              <td class="order-col" data-val="110">#110</td>
+              <td data-val="https://www.facebook.com/reel/719023734616966"><a href="https://www.facebook.com/reel/719023734616966" target="_blank">View Reel</a></td>
+              <td data-val="8.5K">8.5K</td>
+              <td data-val="8500"><strong>8,500</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/586651774_847447327906005_8024201689548771723_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=EJ_4GGUXCMUQ7kNvwE0p77A&_nc_oc=AdnmXcJcWzsZo93dGvuV75t2cxntf1xtOdpwtHPD-MevvYIsqvWR4JpG0smTaZVSvPQ-zP10zMTXMpNKD2h4W84X&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=RUlh-IbGTbVTEWtSLKij1w&_nc_ss=8&oh=00_Afv50U5fTMxwKyGcdE2_jJrQv5D58d92_jFDrAKWUqDOHQ&oe=69A9FB16" alt="thumb" /></td>
+              <td class="order-col" data-val="109">#109</td>
+              <td data-val="https://www.facebook.com/reel/1190717713257633"><a href="https://www.facebook.com/reel/1190717713257633" target="_blank">View Reel</a></td>
+              <td data-val="412">412</td>
+              <td data-val="412"><strong>412</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/589918425_1404574127631466_6090707213432349965_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=-e6g-UEOXQYQ7kNvwF0kIT-&_nc_oc=Adm15GEVn14j1hM2fco7bbqDxX-LG0MXgaV6Y3VvsQeB6H00kD6YHQ-uOsOq3q43QmDmAAIbANBR_k0YQ-3EmbK9&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=RUlh-IbGTbVTEWtSLKij1w&_nc_ss=8&oh=00_Afukctn2iRzfwaH_HdaAzHsr2kmT4WSvQqN3AmUCNI0Lyw&oe=69A9FD86" alt="thumb" /></td>
+              <td class="order-col" data-val="108">#108</td>
+              <td data-val="https://www.facebook.com/reel/1949104816018303"><a href="https://www.facebook.com/reel/1949104816018303" target="_blank">View Reel</a></td>
+              <td data-val="602">602</td>
+              <td data-val="602"><strong>602</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.82787-10/590417501_18557013580030343_6701620351146121631_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=100&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=gcdm99qRHaoQ7kNvwHTdfwu&_nc_oc=AdkmKhkDRHUoJMUYXFWmAEO2ryIdBF2RLJ7Wj-EkrGISHhPIJapmpbBwqOL58gJTyrEIb_jD7t-4GajbkJ1mTLLX&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=FczuLt1trV55hIRvWO2yiw&_nc_ss=8&oh=00_Afvn-94r0E1o2_GFB5sehHccuhJGjOLj7KwcyQqVJ9lZ3Q&oe=69A9E675" alt="thumb" /></td>
+              <td class="order-col" data-val="107">#107</td>
+              <td data-val="https://www.facebook.com/reel/1889565991594286"><a href="https://www.facebook.com/reel/1889565991594286" target="_blank">View Reel</a></td>
+              <td data-val="7.6K">7.6K</td>
+              <td data-val="7600"><strong>7,600</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/590405376_1798653557517506_6450907510636384487_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=1V_8bKW0fSAQ7kNvwFLaZs8&_nc_oc=AdnCy7pEXIrZDRfvit7hwZ8HAhp7VkuKgdQ4WhptKWJ2W6rSgaPE8Iw4xfTMFrpqVk86EiueiWYmdWmgwEhzHs8s&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=FczuLt1trV55hIRvWO2yiw&_nc_ss=8&oh=00_AftRcgDUZRkHnHDSk0lNEozMKZgUAhULP-2k09rKsSOS9Q&oe=69A9EC9F" alt="thumb" /></td>
+              <td class="order-col" data-val="106">#106</td>
+              <td data-val="https://www.facebook.com/reel/1568657957892477"><a href="https://www.facebook.com/reel/1568657957892477" target="_blank">View Reel</a></td>
+              <td data-val="929">929</td>
+              <td data-val="929"><strong>929</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/591165602_2948593532177736_8458115903655903726_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=105&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=inUaXBLM7ToQ7kNvwEJ8vR5&_nc_oc=AdmvEBqo_AdymqKCza6c65QuyqgSpUK-zoPsgJ6mp4lBm0MHn9S-zD-5DTbVSfK40KkOWwZDHWeor3KXUUTWXWq4&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=FczuLt1trV55hIRvWO2yiw&_nc_ss=8&oh=00_AftGEKLo1QFmlTrP2X2W29bcFr1F42sMNqMnywcbXpxEqw&oe=69A9FC30" alt="thumb" /></td>
+              <td class="order-col" data-val="105">#105</td>
+              <td data-val="https://www.facebook.com/reel/1645271850183145"><a href="https://www.facebook.com/reel/1645271850183145" target="_blank">View Reel</a></td>
+              <td data-val="940">940</td>
+              <td data-val="940"><strong>940</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/587179021_1346107920103334_8004508549589613396_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=111&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=quqynoEEDs0Q7kNvwGbIB-E&_nc_oc=AdkyFSiVKU-gwmcwnPVwK71PGSolldvxV_XG8HkS1-FxAUcMp7ICD7ses2gTcZhXLQ0NfbJ5y_f3n8VeNqHXFgs4&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=FczuLt1trV55hIRvWO2yiw&_nc_ss=8&oh=00_AfsJeNDtiDX8lyl-6acLvm9rQqw3dGwaRKkoIWtnIF4Yuw&oe=69A9D4A1" alt="thumb" /></td>
+              <td class="order-col" data-val="104">#104</td>
+              <td data-val="https://www.facebook.com/reel/1160736112909904"><a href="https://www.facebook.com/reel/1160736112909904" target="_blank">View Reel</a></td>
+              <td data-val="1.5K">1.5K</td>
+              <td data-val="1500"><strong>1,500</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/584391881_878335801193576_1384241508587184747_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=5HSKeGftVw0Q7kNvwHxx16b&_nc_oc=Adnc0pc35uVlInPoLpwRQ-mt2luLKQF2CBNiTr856k0tkC1gH9SjIT8EvRM0hLoP0f0y0WG_vAO778Imn78QkNT2&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=FczuLt1trV55hIRvWO2yiw&_nc_ss=8&oh=00_Aftb2yQm6Q9JBUc_hKlzlRE9QnpmokUjQf2g2g62gG1CpA&oe=69A9E8D3" alt="thumb" /></td>
+              <td class="order-col" data-val="103">#103</td>
+              <td data-val="https://www.facebook.com/reel/25015618771440489"><a href="https://www.facebook.com/reel/25015618771440489" target="_blank">View Reel</a></td>
+              <td data-val="2.6K">2.6K</td>
+              <td data-val="2600"><strong>2,600</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/588631223_1655406965825834_9110941892140317349_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=cp4yQp_hXvMQ7kNvwE79T1H&_nc_oc=Adn25DJhWic4YOfrMQ4gs9EVwbUo2CZXlEo-3LYgj5M0qXxV9YdxRQ8L5ZzdBcvQyWXG8YAliWDj1rDAXLbZZ7aH&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=FczuLt1trV55hIRvWO2yiw&_nc_ss=8&oh=00_AfvzEFcafJxbIrW6lC2P0oQ_B0EM4hYPXuZN9Ky5OoEaOw&oe=69A9E81F" alt="thumb" /></td>
+              <td class="order-col" data-val="102">#102</td>
+              <td data-val="https://www.facebook.com/reel/1031320459137838"><a href="https://www.facebook.com/reel/1031320459137838" target="_blank">View Reel</a></td>
+              <td data-val="3.9K">3.9K</td>
+              <td data-val="3900"><strong>3,900</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/586536248_825539093725367_3453014684964838568_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=jMxbd9nQ-5IQ7kNvwHIv5rr&_nc_oc=AdmN66zZmo0GULT7WES_NglMHz7FqJct-2TH52YKvj2Q2Sx_q6XYLDtA9P9mwykjjGj8KRt-uvNATbmc8h0aS7G9&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=FczuLt1trV55hIRvWO2yiw&_nc_ss=8&oh=00_AfsLfeojdCSOv-AzBVa7m3JhBJbYefP8eLLBBxqk1RLreQ&oe=69A9E29C" alt="thumb" /></td>
+              <td class="order-col" data-val="101">#101</td>
+              <td data-val="https://www.facebook.com/reel/865284049492825"><a href="https://www.facebook.com/reel/865284049492825" target="_blank">View Reel</a></td>
+              <td data-val="6.8K">6.8K</td>
+              <td data-val="6800"><strong>6,800</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/583052674_1736663213684663_2675255594463420130_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=101&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=oz7GIAelylIQ7kNvwEN70CZ&_nc_oc=AdnqnHzsfsWm4ZW7S7whywKlo2dxKJUTcAoKboYBJV02Hfa4q6a7Az_iyQV-nSqSW-Mr2oOLN5xa-CMSgH9Wyx9l&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=FczuLt1trV55hIRvWO2yiw&_nc_ss=8&oh=00_AfuK15kzLkAjKFXK-A-dbfRHGVC3xYLWHcUk1Qsd7H5vSw&oe=69A9FB32" alt="thumb" /></td>
+              <td class="order-col" data-val="100">#100</td>
+              <td data-val="https://www.facebook.com/reel/1862827668450864"><a href="https://www.facebook.com/reel/1862827668450864" target="_blank">View Reel</a></td>
+              <td data-val="1K">1K</td>
+              <td data-val="1000"><strong>1,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/582225002_817257650918322_1670106990491681583_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=8Iv7bTdXQdYQ7kNvwHh3IWr&_nc_oc=AdnGJvhWat1EyJSCfdcOtk2DnmqdcK4flT1J2grNin9BebsH4r7RrsjbRmcVgX4Ik72dmF0t7ZofuUSQ2FuM9jqc&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=FczuLt1trV55hIRvWO2yiw&_nc_ss=8&oh=00_Afv4_c4sz_rxGo3c3ZVT7zbZwsjBsIMa0jknl835-SPQZw&oe=69A9E50A" alt="thumb" /></td>
+              <td class="order-col" data-val="99">#99</td>
+              <td data-val="https://www.facebook.com/reel/1346517173819196"><a href="https://www.facebook.com/reel/1346517173819196" target="_blank">View Reel</a></td>
+              <td data-val="3.4K">3.4K</td>
+              <td data-val="3400"><strong>3,400</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/584377240_846370891261673_2876669375922634571_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=105&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=mvZQDzrh7F8Q7kNvwFCWD2-&_nc_oc=AdnXxi7tFSc5k3tSy8HaKI5UorwuuEg2lYA9-WhX48j8kQadckQaIxiUxNuANLf88jQjI_WlbqR2MDPJBQME4Xi0&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=FczuLt1trV55hIRvWO2yiw&_nc_ss=8&oh=00_AfurjMKPULzu4Q68B9mVYJAX-mSbSmNxAVeTHFNR-n5RpQ&oe=69A9DFB7" alt="thumb" /></td>
+              <td class="order-col" data-val="98">#98</td>
+              <td data-val="https://www.facebook.com/reel/1366830448368816"><a href="https://www.facebook.com/reel/1366830448368816" target="_blank">View Reel</a></td>
+              <td data-val="2.7K">2.7K</td>
+              <td data-val="2700"><strong>2,700</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/582080557_2150372665489581_5981428426787462618_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=MemUCI5gCvgQ7kNvwE1bK9t&_nc_oc=Adnnv5pp1nzClmpVTxPpUm_Q7kL38MhBhhloobeW4NeXmZYRV0bfDYHRLVFqJOpbL1jsJaWSH3o36xOe-RCMqtqy&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=HX3fmzk2AfWegypEPeRObg&_nc_ss=8&oh=00_AfsyhTOjl8levV0_SMvpzUiFEJieOzmSmFNGPssRfBEC2A&oe=69AA0A1A" alt="thumb" /></td>
+              <td class="order-col" data-val="97">#97</td>
+              <td data-val="https://www.facebook.com/reel/1368127251697513"><a href="https://www.facebook.com/reel/1368127251697513" target="_blank">View Reel</a></td>
+              <td data-val="40K">40K</td>
+              <td data-val="40000"><strong>40,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/581523812_2102326583905766_6696577979630767615_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=100&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=2siFv4_oUqMQ7kNvwGSseOQ&_nc_oc=AdkIiZgrbMD29kJjbI-w4RnUwmlCd2d0Um-S3O5ou8KA7Jrqbyuwk9pU5bkvz2s4WiG3VP1GND9z1nlH_uP6RkYi&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=HX3fmzk2AfWegypEPeRObg&_nc_ss=8&oh=00_AfuvUJZD9zfZ2X64wgIMwSfn-BTZUDw2Dner15uZ1W2eaw&oe=69A9FC18" alt="thumb" /></td>
+              <td class="order-col" data-val="96">#96</td>
+              <td data-val="https://www.facebook.com/reel/2035692617225924"><a href="https://www.facebook.com/reel/2035692617225924" target="_blank">View Reel</a></td>
+              <td data-val="3.4K">3.4K</td>
+              <td data-val="3400"><strong>3,400</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/581019979_858275470231510_3924269408719061396_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=njIWUHkiWZkQ7kNvwGDFLcG&_nc_oc=AdnlC6GDErUyeDdA283TcEw4U3VBPLYIHH-_brxlGRhQvzdNequQ85wq5NNWGt540L0UJ2PDgwilWR3G95bYa0_L&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=HX3fmzk2AfWegypEPeRObg&_nc_ss=8&oh=00_AfsSMa3eN18BkgW6fXba1aa-dcgfCRwaQdPm2uvK_2E8fQ&oe=69AA0655" alt="thumb" /></td>
+              <td class="order-col" data-val="95">#95</td>
+              <td data-val="https://www.facebook.com/reel/1977580123088569"><a href="https://www.facebook.com/reel/1977580123088569" target="_blank">View Reel</a></td>
+              <td data-val="263">263</td>
+              <td data-val="263"><strong>263</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/576067716_719032394563530_3720958642511804779_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=yLull-g3428Q7kNvwH-C8n-&_nc_oc=AdnKZZ3Y-IAs0xwnCDqZhmtsVS4FrN_YigaxUtVafG-2fL8Tg-rb4Uz1BxodtypjdVR6rYpCcJf8GXJ4kQxY90XM&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=HX3fmzk2AfWegypEPeRObg&_nc_ss=8&oh=00_AftPmYqTXNeObFYNd9_fd6TErN149iQvDu8HDKdqNctzwA&oe=69AA02CC" alt="thumb" /></td>
+              <td class="order-col" data-val="94">#94</td>
+              <td data-val="https://www.facebook.com/reel/1747748025932287"><a href="https://www.facebook.com/reel/1747748025932287" target="_blank">View Reel</a></td>
+              <td data-val="1K">1K</td>
+              <td data-val="1000"><strong>1,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/580036475_1501519634236676_5760448875375923854_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=JHRSlV2YoPAQ7kNvwGzDncW&_nc_oc=AdmS8O32GSmjOLPc2JaZuXXZHkqji632Cd9P44mYFm-xD2FNfpzJ5_dqITOBBgSQXwBpNH-OWPUrbbbHDWX6f74o&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=HX3fmzk2AfWegypEPeRObg&_nc_ss=8&oh=00_Afu1n252Ou2O1FkiUcpDHcN6pmNk21i0oZqt5xEytDQgqg&oe=69A9EF47" alt="thumb" /></td>
+              <td class="order-col" data-val="93">#93</td>
+              <td data-val="https://www.facebook.com/reel/3883373818630901"><a href="https://www.facebook.com/reel/3883373818630901" target="_blank">View Reel</a></td>
+              <td data-val="970">970</td>
+              <td data-val="970"><strong>970</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/574552793_1391062315985757_4147726759623913579_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=8dz--6PyTx4Q7kNvwFZXS23&_nc_oc=AdkLXYIWDszUqCf74w4u9rFdZyuUNlHmdGfGRJprEBL2MqCjX4nL_aikwut8w5IIryMhPgbTKNXUNPyBnNi8PtIF&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=HX3fmzk2AfWegypEPeRObg&_nc_ss=8&oh=00_AfsRIQkV186Vm0oXyWf6AD5JFEmEayyxlGWZVIGsHzq7Nw&oe=69A9E38B" alt="thumb" /></td>
+              <td class="order-col" data-val="92">#92</td>
+              <td data-val="https://www.facebook.com/reel/763662140041686"><a href="https://www.facebook.com/reel/763662140041686" target="_blank">View Reel</a></td>
+              <td data-val="2K">2K</td>
+              <td data-val="2000"><strong>2,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/573714269_1467655094314393_2317435367049769687_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=UOx3djsF-HEQ7kNvwHS1-Dw&_nc_oc=AdmJWfGIR8mkfMNQvf5XJ7jTA9UJ-7QBV1KETAp27dPiN5R87ZlgW8VQ2LtY-NWtP8bHwrOpok6BxdeN4vhKPr17&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=HX3fmzk2AfWegypEPeRObg&_nc_ss=8&oh=00_AfuIFnDgTFfFxPj7Mr0dOppPSMrCvNWD_BUQDCT-sjSQXw&oe=69A9FBEC" alt="thumb" /></td>
+              <td class="order-col" data-val="91">#91</td>
+              <td data-val="https://www.facebook.com/reel/2364625487302980"><a href="https://www.facebook.com/reel/2364625487302980" target="_blank">View Reel</a></td>
+              <td data-val="2.3K">2.3K</td>
+              <td data-val="2300"><strong>2,300</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/572925240_1243676177518971_4161354058072750196_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=zofT6O9ZkkQQ7kNvwHtpIGi&_nc_oc=AdlcFCBi4dF5xQkfiOmHQ-P_CILUSVRZFFlZYKhByzNEsdpWfG9Zn6Eq7Tn9C29UwB9XKP9EtmV0ZujKu7J1hW0i&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=HX3fmzk2AfWegypEPeRObg&_nc_ss=8&oh=00_AfsghbT5KwUmxz1dBGroPDDgrlPpadgbQohtYwMlNrI7cw&oe=69A9EF40" alt="thumb" /></td>
+              <td class="order-col" data-val="90">#90</td>
+              <td data-val="https://www.facebook.com/reel/1751813648853764"><a href="https://www.facebook.com/reel/1751813648853764" target="_blank">View Reel</a></td>
+              <td data-val="1.2K">1.2K</td>
+              <td data-val="1200"><strong>1,200</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/573285969_1165906222310688_3111938031826862522_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=111&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=ve6EKbesSwgQ7kNvwHdbkKg&_nc_oc=Adlt68lv-W-QV2xE-fv1FqBoYyRpsCSaZHPo--Zbq-myQECEzGrEgRMwTE3VKQJDeDw6Vn_6t7OnCft3qyH_lkUP&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=HX3fmzk2AfWegypEPeRObg&_nc_ss=8&oh=00_Afs2gzE-JncppBDATrLaPOdZXuYr_QTJteWNyrfbiveicA&oe=69AA0810" alt="thumb" /></td>
+              <td class="order-col" data-val="89">#89</td>
+              <td data-val="https://www.facebook.com/reel/1110741597892056"><a href="https://www.facebook.com/reel/1110741597892056" target="_blank">View Reel</a></td>
+              <td data-val="14K">14K</td>
+              <td data-val="14000"><strong>14,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/572588093_2009434843137050_4117839713431998214_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=OLH0vGCgbPEQ7kNvwGq70mX&_nc_oc=AdnvO8V8XC_zIY_pbF-iIdAQo93KVMPV516sda9kixmz09lQuRBBM7khmxOE9F6jr6y0KnYCW7DBwLxMdYzHdGDH&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=HX3fmzk2AfWegypEPeRObg&_nc_ss=8&oh=00_AfuGtaXbpEpwzo0I_YJH-HKfFag1OpWquJ4ftyU4WXzt7w&oe=69A9E501" alt="thumb" /></td>
+              <td class="order-col" data-val="88">#88</td>
+              <td data-val="https://www.facebook.com/reel/2048385009345953"><a href="https://www.facebook.com/reel/2048385009345953" target="_blank">View Reel</a></td>
+              <td data-val="2.6K">2.6K</td>
+              <td data-val="2600"><strong>2,600</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/573553756_1242715557618014_158086537665961904_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=102&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=t5OhpOlvSUkQ7kNvwHmf5N4&_nc_oc=AdlcKIfMDrkDwDjEsCZjrxYk4_VzATQ9fp9yqMU51BX5HBjnLJdhQwhKZz2AU-Fbu-UPoPmmIca9JlsOX1WQ2Lvn&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=si5c89hFz4pAQiqlNPn2rQ&_nc_ss=8&oh=00_Aft0dnKWG1SZWmV8DiuaTROLH8ceFt7AFAWKGRh0lKNeTA&oe=69A9E3E4" alt="thumb" /></td>
+              <td class="order-col" data-val="87">#87</td>
+              <td data-val="https://www.facebook.com/reel/811964461760504"><a href="https://www.facebook.com/reel/811964461760504" target="_blank">View Reel</a></td>
+              <td data-val="549">549</td>
+              <td data-val="549"><strong>549</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/573199337_851695830730521_3209882120318366937_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=Z0LVACCP5rwQ7kNvwF2V7qY&_nc_oc=AdlSphNO7AO7a4MBKmMNtpouQhKs1dYXvVfanD4roY42IQe6_TV2AlDGWVBxZPD9LY83dLU0-KgHWQuuOHUK50R6&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=si5c89hFz4pAQiqlNPn2rQ&_nc_ss=8&oh=00_Afu94PD9kwn1MCivEas5zYL9iReeMfo_kXv4gElCV9d-RA&oe=69A9D6B4" alt="thumb" /></td>
+              <td class="order-col" data-val="86">#86</td>
+              <td data-val="https://www.facebook.com/reel/621572087611947"><a href="https://www.facebook.com/reel/621572087611947" target="_blank">View Reel</a></td>
+              <td data-val="2K">2K</td>
+              <td data-val="2000"><strong>2,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/573210169_1600374827797748_7820591245790886976_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=105&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=QUCZ_Qgjcz0Q7kNvwGP0w18&_nc_oc=AdkqmXbK1iG4TLWg4iga7L670wfo9-sWcDs2DurzGgfc6LNsh3kBkExSwsltlNHnUMa7lJITCVE4HVRobkXAw7yF&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=si5c89hFz4pAQiqlNPn2rQ&_nc_ss=8&oh=00_AfvyHaPQUsrOTsQ7u4XbYF0fnjJ1p_7pEwFJzB0JNM8eLA&oe=69AA0A43" alt="thumb" /></td>
+              <td class="order-col" data-val="85">#85</td>
+              <td data-val="https://www.facebook.com/reel/2411463579255572"><a href="https://www.facebook.com/reel/2411463579255572" target="_blank">View Reel</a></td>
+              <td data-val="115">115</td>
+              <td data-val="115"><strong>115</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/573662315_679216708574566_6158471962362830821_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=105&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=tfkn728eWtkQ7kNvwEZ9ccH&_nc_oc=Adl8Q-O-5g_PQGWaTZrVL8clDsjUZoZp5hmDcvR8q-PEDlCwgFqYJ2gl2r_fGzST3lMrBembwVB5uKEQCIlG0HNy&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=si5c89hFz4pAQiqlNPn2rQ&_nc_ss=8&oh=00_Aftm4PoGjrGBy2NTunOcTmqoP59TxUlqPALZw5AW9baviQ&oe=69A9E428" alt="thumb" /></td>
+              <td class="order-col" data-val="84">#84</td>
+              <td data-val="https://www.facebook.com/reel/906352991724455"><a href="https://www.facebook.com/reel/906352991724455" target="_blank">View Reel</a></td>
+              <td data-val="3.5K">3.5K</td>
+              <td data-val="3500"><strong>3,500</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/571332063_1263395158879062_2356303148220744559_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=100&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=WtNyKZ7b8aEQ7kNvwEphjfL&_nc_oc=Adk3nywKp0582W4ZnNEneTuTynAuAobMkcAqHSPOIpI7pN14R2q-OzoM7GLOhyjY6sQczoug8lQBcqQRhZ7_-tJr&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=si5c89hFz4pAQiqlNPn2rQ&_nc_ss=8&oh=00_AfuBKycb8Y_a9GEmqyFJGactsg4D9iX2b7QgRKPzI2yxEw&oe=69A9DC87" alt="thumb" /></td>
+              <td class="order-col" data-val="83">#83</td>
+              <td data-val="https://www.facebook.com/reel/1457999509465998"><a href="https://www.facebook.com/reel/1457999509465998" target="_blank">View Reel</a></td>
+              <td data-val="1.4K">1.4K</td>
+              <td data-val="1400"><strong>1,400</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/570601033_799161436339868_5733890934235062824_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=BWlkx5vTU50Q7kNvwENlWrZ&_nc_oc=Adl143-EcbClIsP-U6AuJzD_OUOjoVksxzOUI9GmAX3AC6sgPtu47obJ6tttQq32xmctBvod4bgjz6UTCucoNIrq&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=si5c89hFz4pAQiqlNPn2rQ&_nc_ss=8&oh=00_AfvEIKRoRDDmpvGFHbR4Z2Ut6tEN8dJdhiwQjbdqZuhxOg&oe=69AA058D" alt="thumb" /></td>
+              <td class="order-col" data-val="82">#82</td>
+              <td data-val="https://www.facebook.com/reel/1617671555706968"><a href="https://www.facebook.com/reel/1617671555706968" target="_blank">View Reel</a></td>
+              <td data-val="532">532</td>
+              <td data-val="532"><strong>532</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/572929245_1460742601658145_6521972294092541115_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=MBLwHxwBGzMQ7kNvwFjIM-F&_nc_oc=AdmzRqzdHkFWxlqdsdRnzQr42SfLtIsxpWFN48d-kTdaly3durEXUizBRb7T1xiST-MZj-QAh7MBQW_ERqRVs8QE&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=si5c89hFz4pAQiqlNPn2rQ&_nc_ss=8&oh=00_AfsOk2uH8HzH4pAGpI2E-HWtsBgqPsrt80QQSE-s-5d28g&oe=69A9DD71" alt="thumb" /></td>
+              <td class="order-col" data-val="81">#81</td>
+              <td data-val="https://www.facebook.com/reel/795579090028872"><a href="https://www.facebook.com/reel/795579090028872" target="_blank">View Reel</a></td>
+              <td data-val="9K">9K</td>
+              <td data-val="9000"><strong>9,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/574175100_843629108103551_3779709637069312743_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=111&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=ijJls0UhMKkQ7kNvwGN10X5&_nc_oc=AdlFCpGfLiMNCacZfuMQjvZp-dQomm5AUjq6YvvvZ5BCC7qyvosqHp1MxHqqWE54zA4zgzxFUjBf4Fyr9FQPNEpr&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=si5c89hFz4pAQiqlNPn2rQ&_nc_ss=8&oh=00_AftNQPRQS6KcU3A93JQ34CwwvsSuxhW0hN3tzrpovqbNJw&oe=69A9E1E8" alt="thumb" /></td>
+              <td class="order-col" data-val="80">#80</td>
+              <td data-val="https://www.facebook.com/reel/2057644558399683"><a href="https://www.facebook.com/reel/2057644558399683" target="_blank">View Reel</a></td>
+              <td data-val="2.5K">2.5K</td>
+              <td data-val="2500"><strong>2,500</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/571462548_816910697863843_6816361223508631915_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=DCdZVIlkCWAQ7kNvwEH2y1s&_nc_oc=Adkp80RtlH6_WtTr_9smk7jHD2-ZPVSomeVDlF99ZM-8HD8QGv1sUNUCYi4c0HDqoDKSdDKjZes42Z21l_Esn1p7&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=si5c89hFz4pAQiqlNPn2rQ&_nc_ss=8&oh=00_AftV4jvnJkaI6sohvGYYavRBcW-4NoZRMQ56ADgYw12sHQ&oe=69A9F37B" alt="thumb" /></td>
+              <td class="order-col" data-val="79">#79</td>
+              <td data-val="https://www.facebook.com/reel/1352380765747369"><a href="https://www.facebook.com/reel/1352380765747369" target="_blank">View Reel</a></td>
+              <td data-val="407">407</td>
+              <td data-val="407"><strong>407</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/573097176_2459834164388716_3235083300473313527_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=102&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=_xKhY34KhxkQ7kNvwHHbzpx&_nc_oc=AdkObU4k1ATZ1EXon2y-ahMqmpC3y3YthJ3bi4YWNqkmb09RUYu9VuqJWqucVV-hAciuwguJ_14xeFuSM-ENffGE&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=si5c89hFz4pAQiqlNPn2rQ&_nc_ss=8&oh=00_AfuZomnTC67OqpomDMMgWltCcJKRXRrpQj3YzoikdV3maw&oe=69A9F2A8" alt="thumb" /></td>
+              <td class="order-col" data-val="78">#78</td>
+              <td data-val="https://www.facebook.com/reel/1156335969212072"><a href="https://www.facebook.com/reel/1156335969212072" target="_blank">View Reel</a></td>
+              <td data-val="4.8K">4.8K</td>
+              <td data-val="4800"><strong>4,800</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/570033178_1322846925561265_1574546791222968449_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=xNkDxo6JgaYQ7kNvwE6AOVz&_nc_oc=AdniGDnZCyGbzNtPz7c4SOkyDkAILYd1PeKkoy6cCcmyRcWk_g24t4ic-sEFqZefSYZZNKGJ1WCqvooAheAgXpFK&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=MLlm6jVGU6SrE9Ie4SFJrg&_nc_ss=8&oh=00_AfvYau8GB2fUOnoTeN0twgUju3SU4q8_-gi4ePfBgQnVHQ&oe=69A9F2A3" alt="thumb" /></td>
+              <td class="order-col" data-val="77">#77</td>
+              <td data-val="https://www.facebook.com/reel/832652699347700"><a href="https://www.facebook.com/reel/832652699347700" target="_blank">View Reel</a></td>
+              <td data-val="1K">1K</td>
+              <td data-val="1000"><strong>1,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.82787-10/569424171_18548284822030343_5522706051682628706_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=jQfbFeKvSmcQ7kNvwG4y7tu&_nc_oc=AdmvQ2nE5qEJcZls8N8GNwmeBAT7mI2IEPYAbEI97OKMQQ9xO37a6k1yHS3iHOmOV0E-mkLUCYxmzutab6hE4LcE&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=MLlm6jVGU6SrE9Ie4SFJrg&_nc_ss=8&oh=00_AfskJDALT08S-As11eHtmxKsZUdEmC_7-p_lU8n8sxWwXg&oe=69A9DE59" alt="thumb" /></td>
+              <td class="order-col" data-val="76">#76</td>
+              <td data-val="https://www.facebook.com/reel/1087329806948440"><a href="https://www.facebook.com/reel/1087329806948440" target="_blank">View Reel</a></td>
+              <td data-val="1K">1K</td>
+              <td data-val="1000"><strong>1,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/569026542_838196381915322_7028091109962478826_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=105&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=g6stYoSFi4AQ7kNvwE6uulX&_nc_oc=AdnRv8ST6ELC3DKu19v7ZIhvXf1d7A381K8LKoCgEB_9l8OSeUCRG4V6vq4Kn9mKRG9umREy_QI2-I0MC3yJ8lV3&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=MLlm6jVGU6SrE9Ie4SFJrg&_nc_ss=8&oh=00_AftlRCa3G77egSyV5lXWtC5zqxHcbs3cM1Uc4B6hSPf5YQ&oe=69A9ED36" alt="thumb" /></td>
+              <td class="order-col" data-val="75">#75</td>
+              <td data-val="https://www.facebook.com/reel/794656373369546"><a href="https://www.facebook.com/reel/794656373369546" target="_blank">View Reel</a></td>
+              <td data-val="1.7K">1.7K</td>
+              <td data-val="1700"><strong>1,700</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/571263594_1794391714530758_8651887567765717747_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=Quya6eh6AVIQ7kNvwEwhRFK&_nc_oc=AdlNUkgchftOUJUtHzjitBrFZdxf1aAzIKOLiUYvDC9Ag7NkSWtho-SaFATezYrfVC5bBEEnYiYc62dPZcH8WMqJ&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=MLlm6jVGU6SrE9Ie4SFJrg&_nc_ss=8&oh=00_Afvji6SA1b-GpqCDfc7SoJo5jceaIK5_I9so8rtF3S_jWQ&oe=69A9F6B6" alt="thumb" /></td>
+              <td class="order-col" data-val="74">#74</td>
+              <td data-val="https://www.facebook.com/reel/1183224253683883"><a href="https://www.facebook.com/reel/1183224253683883" target="_blank">View Reel</a></td>
+              <td data-val="290">290</td>
+              <td data-val="290"><strong>290</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/567736402_682727521127225_3064273077067249372_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=CUYZdw5pv9wQ7kNvwGFEBlm&_nc_oc=AdkTAAEW5vnUjNtbqM_uxvMGpstW2Y1wQ6QInSeD2rgs7OvVEbWilA5_FuSeGR7aNqaLjtjGZvziT4Lx4O32COq3&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=MLlm6jVGU6SrE9Ie4SFJrg&_nc_ss=8&oh=00_Afu9YyvLCYWe0uT8vkcV6bwFOYFoKM6KXv6w5busNCG3ug&oe=69A9E565" alt="thumb" /></td>
+              <td class="order-col" data-val="73">#73</td>
+              <td data-val="https://www.facebook.com/reel/1116486747325719"><a href="https://www.facebook.com/reel/1116486747325719" target="_blank">View Reel</a></td>
+              <td data-val="417">417</td>
+              <td data-val="417"><strong>417</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/569205770_2176144976210094_3761518331963071487_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=rTx0SAlRmYMQ7kNvwG7UxFA&_nc_oc=AdmDIlQo8M9Ex9mW_ys_lPFtPr3J-9FI99wmp2vsgh4p6pR7LLU2JZ5h4VK7hS3UzJlVve4G1mn4OV3X98ZOrNMq&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=MLlm6jVGU6SrE9Ie4SFJrg&_nc_ss=8&oh=00_AfuaAzuCjQwGb7Njsi1865i2B8zirEKjQOoMZ1vREYwOBg&oe=69A9F261" alt="thumb" /></td>
+              <td class="order-col" data-val="72">#72</td>
+              <td data-val="https://www.facebook.com/reel/1506763353889955"><a href="https://www.facebook.com/reel/1506763353889955" target="_blank">View Reel</a></td>
+              <td data-val="3.5K">3.5K</td>
+              <td data-val="3500"><strong>3,500</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/569127607_740604075658182_6552562425531081100_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=105&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=3LSClNI0Ks8Q7kNvwEd3Fhd&_nc_oc=AdltN3v2amuF13CArH3T9uAObQlERhjo_zEB0CXsoEjE8TVali0DOhtGdZuCINGuecNgXKLuoA7gbV8W9DrOQyGs&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=MLlm6jVGU6SrE9Ie4SFJrg&_nc_ss=8&oh=00_AfsahiyyK6Bz75mVwPPbp4mGO0LsJxtqQQRGVocc025SBA&oe=69AA0A87" alt="thumb" /></td>
+              <td class="order-col" data-val="71">#71</td>
+              <td data-val="https://www.facebook.com/reel/752661174485524"><a href="https://www.facebook.com/reel/752661174485524" target="_blank">View Reel</a></td>
+              <td data-val="1.8K">1.8K</td>
+              <td data-val="1800"><strong>1,800</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/565627662_1829689367645360_8041663156124575664_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=Dx7Q3h2ZOtAQ7kNvwEhVeqk&_nc_oc=Admz-fYBH-J51YyFBJKQcTa3G-UXqc6OjirSjgGOHbgRt7fmEk8ooA6iSHikcRXsYzGIkifXWbG32Wqi9H6nOY7q&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=MLlm6jVGU6SrE9Ie4SFJrg&_nc_ss=8&oh=00_AftDYnwfYwboRyMihXBkBU-fmkegRZfEb7VlavgkpONDjg&oe=69A9FB57" alt="thumb" /></td>
+              <td class="order-col" data-val="70">#70</td>
+              <td data-val="https://www.facebook.com/reel/2230065290822169"><a href="https://www.facebook.com/reel/2230065290822169" target="_blank">View Reel</a></td>
+              <td data-val="11K">11K</td>
+              <td data-val="11000"><strong>11,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/565068092_1541799250178112_1382252879986930746_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=f4-zXyQDZ7kQ7kNvwEfVwJh&_nc_oc=AdkQCfYoyOErs3FEDh1Qc3qXXKeOzYDppeev0_Cu7Reeo0vWVihdnviQys_KZWxswtI7kuIqBwMV3LfruSu4KGQ3&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=MLlm6jVGU6SrE9Ie4SFJrg&_nc_ss=8&oh=00_Afv2h8wKhtvo50X5yDCpBzM1M-Ri7ict1KUkBYp0vl8CLg&oe=69A9EC3F" alt="thumb" /></td>
+              <td class="order-col" data-val="69">#69</td>
+              <td data-val="https://www.facebook.com/reel/1485768239350936"><a href="https://www.facebook.com/reel/1485768239350936" target="_blank">View Reel</a></td>
+              <td data-val="16K">16K</td>
+              <td data-val="16000"><strong>16,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/567941181_1475061707124648_3953404191133697829_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=100&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=QEmIi3K9Vy4Q7kNvwH4Wlk5&_nc_oc=AdnpDoQlzQNshJJ0ROk2cBZVSjUaSoiKYKGvYVEcFzhnE9aHEyMp89yzAWq_lDdB9zVv0sooHvZgGcjlJ1hHpk0K&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=MLlm6jVGU6SrE9Ie4SFJrg&_nc_ss=8&oh=00_AfuV5icxvLAY_SjakNkj4WVuyA7Jr5kN2oOoFDhmn98h_Q&oe=69A9FB3E" alt="thumb" /></td>
+              <td class="order-col" data-val="68">#68</td>
+              <td data-val="https://www.facebook.com/reel/1580979529940448"><a href="https://www.facebook.com/reel/1580979529940448" target="_blank">View Reel</a></td>
+              <td data-val="11K">11K</td>
+              <td data-val="11000"><strong>11,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/569351618_1514479669900965_4153496952629825301_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=102&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=FtyXZTBQfcQQ7kNvwFe95qW&_nc_oc=Adkm4leDI22zEZZ84HJsnNNb9cJGi-BT72wehdWw1xFk6k7HUdNg8BV1mq9g-6BOPuJFDob9m1Kh1CBHGfM1EL_Z&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=JBUARxZMMAlroOav_Hxbzw&_nc_ss=8&oh=00_AfsVLhWcrjbgG3iK3nr9uYwtkCxpnq0fIDVPTQo0pH6Lsw&oe=69AA0A15" alt="thumb" /></td>
+              <td class="order-col" data-val="67">#67</td>
+              <td data-val="https://www.facebook.com/reel/661456383512074"><a href="https://www.facebook.com/reel/661456383512074" target="_blank">View Reel</a></td>
+              <td data-val="3.9K">3.9K</td>
+              <td data-val="3900"><strong>3,900</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/567299325_1491171248761744_5086801967391140493_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=T_2nN1BXa78Q7kNvwGgWIux&_nc_oc=AdnRJR3CP6SK4JrGhAdmV4v3Sg3Srp6P4nsjFnlvKopKyp28ZchFfI0aQ6KajOO7SIm_wCyo73HEowIZVqwTgdSt&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=JBUARxZMMAlroOav_Hxbzw&_nc_ss=8&oh=00_AfvU8iD8j5lZN4A_6_BlpYcyNlKeyPjsDmr2ff3k72Dn0Q&oe=69AA0736" alt="thumb" /></td>
+              <td class="order-col" data-val="66">#66</td>
+              <td data-val="https://www.facebook.com/reel/700182716432801"><a href="https://www.facebook.com/reel/700182716432801" target="_blank">View Reel</a></td>
+              <td data-val="20K">20K</td>
+              <td data-val="20000"><strong>20,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/568303306_734964006228676_7775466069844754803_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=105&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=5_PHrOfiT7wQ7kNvwFINOqH&_nc_oc=Adnr1l75eLZFJz74V-UxlF3WmxiPTVFTAeLvy-gmOPtQAH52S8xFGy-Ct33MPE7k6frrgk1nZjySLBxfj_PG-U8m&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=JBUARxZMMAlroOav_Hxbzw&_nc_ss=8&oh=00_AfuxiyzWZT2n7Xg-ibR-hEQ6ahVtMVOv1gKAitQLFRwAhw&oe=69A9EC70" alt="thumb" /></td>
+              <td class="order-col" data-val="65">#65</td>
+              <td data-val="https://www.facebook.com/reel/1155778309821266"><a href="https://www.facebook.com/reel/1155778309821266" target="_blank">View Reel</a></td>
+              <td data-val="11K">11K</td>
+              <td data-val="11000"><strong>11,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/565997594_1380436606983177_7594499701176599827_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=32VP9jFvEKUQ7kNvwFt8u7k&_nc_oc=AdmpWh7aUJ_EzB_fOHVKnznbw0F0ULQfkygFs4rU2tyMKhBr2orvLtX0ob5w8okYidRc8XcceJZNoi5W16FlEo5I&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=JBUARxZMMAlroOav_Hxbzw&_nc_ss=8&oh=00_AftmMWahHR-1yNBuV22mXbXRzPkdaYP98OJvMWO3NU_t5g&oe=69A9E065" alt="thumb" /></td>
+              <td class="order-col" data-val="64">#64</td>
+              <td data-val="https://www.facebook.com/reel/761179973584676"><a href="https://www.facebook.com/reel/761179973584676" target="_blank">View Reel</a></td>
+              <td data-val="11K">11K</td>
+              <td data-val="11000"><strong>11,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/566040157_1492707095404584_4676135614878206390_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=111&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=CUf7MRLxahgQ7kNvwGzla3E&_nc_oc=AdmRFRVznJ4H7JomEF7e_YqR0Sc1Say3jnm4P0lISs57Xrt_Hnf4d-fDID6YUZPQsqXK5UiWX0-CsNPTCCnf_1EM&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=JBUARxZMMAlroOav_Hxbzw&_nc_ss=8&oh=00_Afv6AiPrsmV4R9qY1LHRJ0BwnteenJEGb32PGnZFgDn-BA&oe=69AA040F" alt="thumb" /></td>
+              <td class="order-col" data-val="63">#63</td>
+              <td data-val="https://www.facebook.com/reel/1345579967243385"><a href="https://www.facebook.com/reel/1345579967243385" target="_blank">View Reel</a></td>
+              <td data-val="2.1K">2.1K</td>
+              <td data-val="2100"><strong>2,100</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/565041248_800320736039251_6000596533993236185_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=d3tcfSq5xFQQ7kNvwGvVzXn&_nc_oc=Adn6AXI9VJpR7jCKGHCnty84TJFVnIc4gTae_jnzMoT-yDooU8CFjuFMKBiLWOtQKNfQyPRkElbUEjgfDRV8P8m_&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=JBUARxZMMAlroOav_Hxbzw&_nc_ss=8&oh=00_AfvUF5IJ8ozzBcGZN0wTJ2WmbSN3ICSQ_dbNKitxVvYeEQ&oe=69A9F0BF" alt="thumb" /></td>
+              <td class="order-col" data-val="62">#62</td>
+              <td data-val="https://www.facebook.com/reel/1480609793172587"><a href="https://www.facebook.com/reel/1480609793172587" target="_blank">View Reel</a></td>
+              <td data-val="892">892</td>
+              <td data-val="892"><strong>892</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/565190695_1160647852641255_7709434044870392820_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=psatb_tcX6kQ7kNvwGf9XrK&_nc_oc=AdmSupBoGWTdtV5JkfGJaE6VelRY9AiepGLPTCfaPj5YeO3NDyAp0GSRe7XmiCweSKnP1Z1hHwhwp8eZ7fImboaP&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=JBUARxZMMAlroOav_Hxbzw&_nc_ss=8&oh=00_AftZAwKpspG4QmeqoOMJMotZKj9FYq0NJmOOY-iDJ6X-7A&oe=69A9D6C4" alt="thumb" /></td>
+              <td class="order-col" data-val="61">#61</td>
+              <td data-val="https://www.facebook.com/reel/803060468997597"><a href="https://www.facebook.com/reel/803060468997597" target="_blank">View Reel</a></td>
+              <td data-val="370">370</td>
+              <td data-val="370"><strong>370</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/564362001_1310877053480924_3871306654191992369_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=-6CJVc6MtbkQ7kNvwGrz40q&_nc_oc=Adm4ur_yU_Y-Zj4KJYfT2WLGJJUZFG38X4_f6YpbOrg0Ty3QiNLvroSCZSCtmNLb1TjZ3pcsfAAX3lCDaIc9ZzBA&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=JBUARxZMMAlroOav_Hxbzw&_nc_ss=8&oh=00_AftPACKlGtr7ETbS1Spxfb5XrxpI3pt4YzzeDb97Ccoa9A&oe=69AA0734" alt="thumb" /></td>
+              <td class="order-col" data-val="60">#60</td>
+              <td data-val="https://www.facebook.com/reel/1273940234487743"><a href="https://www.facebook.com/reel/1273940234487743" target="_blank">View Reel</a></td>
+              <td data-val="2.1K">2.1K</td>
+              <td data-val="2100"><strong>2,100</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/565482062_1322213975504762_872978725815729342_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=TX5fyU55hfUQ7kNvwEfFLrN&_nc_oc=Admmxxgm5us4Eiw1v2WcQ3X80J7bOrDJYNwj69Qj347SZoPYd8b9PB7wSdh-fRwYnuPkCaGSFUk2sgwJMlFbXoc9&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=JBUARxZMMAlroOav_Hxbzw&_nc_ss=8&oh=00_AfseE-wwkjl62g4_g5B9GlTYpZdcq7chEjU4GVeY2X92dA&oe=69A9DB99" alt="thumb" /></td>
+              <td class="order-col" data-val="59">#59</td>
+              <td data-val="https://www.facebook.com/reel/801782486355718"><a href="https://www.facebook.com/reel/801782486355718" target="_blank">View Reel</a></td>
+              <td data-val="20K">20K</td>
+              <td data-val="20000"><strong>20,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/565020369_24054386997569732_9126682412349356257_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=105&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=N0wo8Cn5QGIQ7kNvwEphB-f&_nc_oc=AdmgDEMAWGObIfxHWwd8wwr1k6oiFxWwxrCVfc6O7MrJa0X9MRNFn9Wq8VauKOz2l7dmnCZ22Uoy-0hFLyZFg5j4&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=JBUARxZMMAlroOav_Hxbzw&_nc_ss=8&oh=00_AftD0EhiVThHRdjgsvCAvPUqhCO8TNB4TpdcyHjrVs23gg&oe=69A9F024" alt="thumb" /></td>
+              <td class="order-col" data-val="58">#58</td>
+              <td data-val="https://www.facebook.com/reel/24733099376384222"><a href="https://www.facebook.com/reel/24733099376384222" target="_blank">View Reel</a></td>
+              <td data-val="1K">1K</td>
+              <td data-val="1000"><strong>1,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/566149891_807171875264710_7059223171838564841_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=cPS7eDSYgAIQ7kNvwGOA_s1&_nc_oc=Adk72Nflyfm3n9CO6-kH2gsqDNq3rWLbn8_L0CJ9zMJTtSDAC-jLh9vWh6XBV8uPu-DP3zGm5mC1VKauiSUSJGsu&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=hNmJFpCgPskc1HwfySHjTQ&_nc_ss=8&oh=00_AfuXoMW0KTKJM67RwwbDTqU08ZbfMSa7BG48pWQNM6vZqQ&oe=69A9FFC4" alt="thumb" /></td>
+              <td class="order-col" data-val="57">#57</td>
+              <td data-val="https://www.facebook.com/reel/1566132124746990"><a href="https://www.facebook.com/reel/1566132124746990" target="_blank">View Reel</a></td>
+              <td data-val="9.3K">9.3K</td>
+              <td data-val="9300"><strong>9,300</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/565055167_1318317029843324_6772305398062353506_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=u6h8aohULtQQ7kNvwGddMXD&_nc_oc=AdmhbsX118IRMjsJ7wLDCFvRr_vwYU_IPYPl23PQNyRWl_sr7pyA1WPcwXFPmusngkpnU48kIZBLjC4khCio4u8E&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=hNmJFpCgPskc1HwfySHjTQ&_nc_ss=8&oh=00_AfuqaFzH9cSdKGs0Wb72Wmv1yb3xJjOCggYrbmgKc8qtoA&oe=69A9F0DE" alt="thumb" /></td>
+              <td class="order-col" data-val="56">#56</td>
+              <td data-val="https://www.facebook.com/reel/2130772454329586"><a href="https://www.facebook.com/reel/2130772454329586" target="_blank">View Reel</a></td>
+              <td data-val="681">681</td>
+              <td data-val="681"><strong>681</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.82787-10/564872760_18545374120030343_6813348495699009234_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=ftQHuhWVFNsQ7kNvwFyxW1M&_nc_oc=Admxu0A9UuacCkS5QYOtzCNIpH5q6StB0Kj2uxQTPz0mOQIMcrNfjNmHj7GDolmIZdhpZ89f2thtZazlu2zhrkpr&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=hNmJFpCgPskc1HwfySHjTQ&_nc_ss=8&oh=00_AfsavhJ-aS_c0tUwBuIHz6TS4KY-tCiV55EgeE6YsXAXZA&oe=69A9EF2A" alt="thumb" /></td>
+              <td class="order-col" data-val="55">#55</td>
+              <td data-val="https://www.facebook.com/reel/1888878091668242"><a href="https://www.facebook.com/reel/1888878091668242" target="_blank">View Reel</a></td>
+              <td data-val="3.8K">3.8K</td>
+              <td data-val="3800"><strong>3,800</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/563561434_1156783856396321_7061818972736919240_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=KB1OnxjMgOsQ7kNvwHGUhfF&_nc_oc=AdkTuz1ZDKUmEB5SdNUj8hhAPzxZ5c5UrfjJDQClioAfRv2D2TXWVd2tWOmg18FaFOgWJOqVBo95NyZOhjjRv0IJ&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=hNmJFpCgPskc1HwfySHjTQ&_nc_ss=8&oh=00_AfuxcAtqCMzL6si19NNFkovIF-0joVaHv59_3GISDqQgWQ&oe=69A9F1A6" alt="thumb" /></td>
+              <td class="order-col" data-val="54">#54</td>
+              <td data-val="https://www.facebook.com/reel/1472327447179753"><a href="https://www.facebook.com/reel/1472327447179753" target="_blank">View Reel</a></td>
+              <td data-val="4.9K">4.9K</td>
+              <td data-val="4900"><strong>4,900</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/563004468_4152152865059540_8614378186004900837_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=111&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=-ZAXQVvNw5YQ7kNvwEWW0Pj&_nc_oc=AdlQp0FNjtf-reeWimJ6NcwR_8UPHE6UnXVS6t6zkbYvmlIsPyeQp0AEpb51IOC3aYxUVX3MgY7QlfIOlGpRGFlB&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=hNmJFpCgPskc1HwfySHjTQ&_nc_ss=8&oh=00_AfsP6W7lAInHLZsgleOxFBer6Nw01qeIzCqPIzQegQYTew&oe=69A9F2B8" alt="thumb" /></td>
+              <td class="order-col" data-val="53">#53</td>
+              <td data-val="https://www.facebook.com/reel/816239420769038"><a href="https://www.facebook.com/reel/816239420769038" target="_blank">View Reel</a></td>
+              <td data-val="238">238</td>
+              <td data-val="238"><strong>238</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/562695194_780618511512467_6626357958710603792_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=_rEiZMSWkwkQ7kNvwGLPrS4&_nc_oc=AdnhXdB_tyunfwdlygDzcCZzu04E-8F1zN2kQQImdhAszgDIKLZJPOJ8D-N7yAc_nu--lpepX6d0OyND4_kHBlg5&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=hNmJFpCgPskc1HwfySHjTQ&_nc_ss=8&oh=00_AftVhy6lgs8qL5Z3PHxj8qKZBJF5swuWDSJUAbh3B_9WtA&oe=69A9ED4B" alt="thumb" /></td>
+              <td class="order-col" data-val="52">#52</td>
+              <td data-val="https://www.facebook.com/reel/802301125726728"><a href="https://www.facebook.com/reel/802301125726728" target="_blank">View Reel</a></td>
+              <td data-val="987">987</td>
+              <td data-val="987"><strong>987</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/563257483_707656885672447_4265406584431399779_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=105&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=vxlSiyApPGsQ7kNvwHFinxD&_nc_oc=AdlbMpEcDqnUCPIaCbZ_urELLyJhjkLtv6dqOGbLxUCwPkee9NuY42mIgTVkIrVb5h3VK2JodP89N6cI6WTCV8JH&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=hNmJFpCgPskc1HwfySHjTQ&_nc_ss=8&oh=00_AfvzlYx_NIwhKSQQa_L7kuOD5mkTp4rDU50y6JAfyS2lhw&oe=69A9E85E" alt="thumb" /></td>
+              <td class="order-col" data-val="51">#51</td>
+              <td data-val="https://www.facebook.com/reel/857211106732625"><a href="https://www.facebook.com/reel/857211106732625" target="_blank">View Reel</a></td>
+              <td data-val="74">74</td>
+              <td data-val="74"><strong>74</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/562386625_793862213253241_489677008815122072_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=4gAklq4LsCIQ7kNvwHaCA4o&_nc_oc=AdmVv2xpsiIFeIN-Lm83KVH2uCXIiWoABTNXVvXFViFf8QxZCcm6Po71E1ECoB-TtBi5MuyWXFXzvjlu4wcL6JR4&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=hNmJFpCgPskc1HwfySHjTQ&_nc_ss=8&oh=00_AftTPXWRUPF_s_f97lte1dnZtimGFkcX3Kz1dertiklCZQ&oe=69AA09E5" alt="thumb" /></td>
+              <td class="order-col" data-val="50">#50</td>
+              <td data-val="https://www.facebook.com/reel/24136082049397953"><a href="https://www.facebook.com/reel/24136082049397953" target="_blank">View Reel</a></td>
+              <td data-val="140">140</td>
+              <td data-val="140"><strong>140</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/562760572_1472299050646709_637050067465950553_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=sCe-j6REBYUQ7kNvwFC305n&_nc_oc=AdkZM80pvC6hT8bG1X_P6i--x83f6X33iKOwDQ6VQLV0J8FQKOUoBp2M_DtS_3iiwOiSv6dG6dOvFnnCPrue2Bii&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=hNmJFpCgPskc1HwfySHjTQ&_nc_ss=8&oh=00_AfuZIfXFZY-V5ENeorRbte6JhmvIvhXwdugMZ72w-XgWBw&oe=69A9FA17" alt="thumb" /></td>
+              <td class="order-col" data-val="49">#49</td>
+              <td data-val="https://www.facebook.com/reel/1837778966817029"><a href="https://www.facebook.com/reel/1837778966817029" target="_blank">View Reel</a></td>
+              <td data-val="202">202</td>
+              <td data-val="202"><strong>202</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/562359811_1316289423522883_6903436326224737704_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=100&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=_0_FF18fbtAQ7kNvwHP5ZMe&_nc_oc=AdlPof6FqDaBxY_b5FwF-VmpqMDHaTMKAh3JQM0TdzXXa2lKeD38N6zC6XBKnxNKg0-XCGqLwRCQWggpP7mVhvYB&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=hNmJFpCgPskc1HwfySHjTQ&_nc_ss=8&oh=00_Afv1If6kZgvBIeqBHXZ6i7LlgsF25Q-m2X0JUi8JHciMxw&oe=69AA0745" alt="thumb" /></td>
+              <td class="order-col" data-val="48">#48</td>
+              <td data-val="https://www.facebook.com/reel/1238217078349704"><a href="https://www.facebook.com/reel/1238217078349704" target="_blank">View Reel</a></td>
+              <td data-val="21K">21K</td>
+              <td data-val="21000"><strong>21,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/562378331_2028421587963586_4566894670941731458_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=lHBrQngBJ8YQ7kNvwHjotXc&_nc_oc=AdkPWArV_I7CuFM9Fp4ETtKz8JKxivaFg15fjx5MeDIFu0xtW7UM6a5lKr9_YtVzmz43dBMIRXpK-FBn65NsnYTb&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=PIMHG5Hji3UvLQy2uqxZRA&_nc_ss=8&oh=00_Afucopl5WpmY5DIZF-0oc2qcZogHfuzrNXZ9OmFHH7pD1A&oe=69A9EBD2" alt="thumb" /></td>
+              <td class="order-col" data-val="47">#47</td>
+              <td data-val="https://www.facebook.com/reel/833513785879509"><a href="https://www.facebook.com/reel/833513785879509" target="_blank">View Reel</a></td>
+              <td data-val="23K">23K</td>
+              <td data-val="23000"><strong>23,000</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/559981975_1076189151252917_8215290398442006274_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=tlwP2RzrpeIQ7kNvwEd39gl&_nc_oc=Adl9fi_xO6FXW-4bZZdh4M4mtjRsS8q-PHncLC_nnFMpk34yscYp8QWbfhh2_QBQWtdWoSJ4VEdnfX_e3xV4ubDD&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=PIMHG5Hji3UvLQy2uqxZRA&_nc_ss=8&oh=00_AftXiyuVcXp65KMFHcmJMLQCCsEUBS3f4MWkpqaae0_X1A&oe=69AA0A99" alt="thumb" /></td>
+              <td class="order-col" data-val="46">#46</td>
+              <td data-val="https://www.facebook.com/reel/1996964181097332"><a href="https://www.facebook.com/reel/1996964181097332" target="_blank">View Reel</a></td>
+              <td data-val="127">127</td>
+              <td data-val="127"><strong>127</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/561454573_826943506451851_1509963003396920026_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=v1Q1_7tIdPcQ7kNvwF-orYY&_nc_oc=AdnGMyB0cd4hS92DbNhp-D09Iz-NoRFfF6_XQ-oyE8ZNLV4ftEG35AIEC6gfs5zkabGCW9Fbf1clBh5Ej3bAvBd5&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=PIMHG5Hji3UvLQy2uqxZRA&_nc_ss=8&oh=00_AfuizEeDUE0rJ8m55yXhm9wn0j22_WkuGGbsw1P9AtvABA&oe=69A9FDAB" alt="thumb" /></td>
+              <td class="order-col" data-val="45">#45</td>
+              <td data-val="https://www.facebook.com/reel/796402856342500"><a href="https://www.facebook.com/reel/796402856342500" target="_blank">View Reel</a></td>
+              <td data-val="217">217</td>
+              <td data-val="217"><strong>217</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/561727983_1766419694015640_5255623896142391539_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=100&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=TuFOS9eHYdQQ7kNvwG38rCM&_nc_oc=Adl5AWG2s8o_1pJWBrxq9jLCVR36KfHRt77QzynauQVNL093kEKCj2zWhz6MpIKqJzZDomBNf7GIZh4wJW0l2jvt&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=PIMHG5Hji3UvLQy2uqxZRA&_nc_ss=8&oh=00_AfsFxE5ajrB7JFWr7yLNeLqNbfoqYcl_NxCI4geLYFsc2Q&oe=69AA0B8B" alt="thumb" /></td>
+              <td class="order-col" data-val="44">#44</td>
+              <td data-val="https://www.facebook.com/reel/1135089158569128"><a href="https://www.facebook.com/reel/1135089158569128" target="_blank">View Reel</a></td>
+              <td data-val="68">68</td>
+              <td data-val="68"><strong>68</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/560446413_1585053022458489_3897955015647457884_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=Pt7S3wF4oR4Q7kNvwEzm9yM&_nc_oc=Adn1anrhlaNxxEdilCTHXbGkUpxc1lvg-yLzyweoPt7Ws6jmQnUlpVUlPz7fc9UgfmjuSGhzwkOWvqBxbnlC3gGb&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=PIMHG5Hji3UvLQy2uqxZRA&_nc_ss=8&oh=00_Afv6RTuipNb2rLWQUhRxU-CywTvXr2Oulr6M7E1iaecx1g&oe=69A9E8AB" alt="thumb" /></td>
+              <td class="order-col" data-val="43">#43</td>
+              <td data-val="https://www.facebook.com/reel/813423474613564"><a href="https://www.facebook.com/reel/813423474613564" target="_blank">View Reel</a></td>
+              <td data-val="70">70</td>
+              <td data-val="70"><strong>70</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/560258176_752761737719306_1062385200237009614_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=Id8ovDvGrtUQ7kNvwF4xmkz&_nc_oc=AdkxiecN-BDfKAyiaYxHa1OBW_vvyb62-MxY6hk7ZsXFxGg6K-RS1sNszf2u_ODo5_WzkGx4EIFyVQbyGgPCpT0v&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=PIMHG5Hji3UvLQy2uqxZRA&_nc_ss=8&oh=00_Afukr2pfnCCwKQzR0cSG5CaYWPeAPphlhbh_NcNH-dIVSQ&oe=69A9EC17" alt="thumb" /></td>
+              <td class="order-col" data-val="42">#42</td>
+              <td data-val="https://www.facebook.com/reel/776485348597218"><a href="https://www.facebook.com/reel/776485348597218" target="_blank">View Reel</a></td>
+              <td data-val="175">175</td>
+              <td data-val="175"><strong>175</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/560038452_3379448155527454_3682532461977198267_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=9EF9MC-9MJAQ7kNvwEP0koZ&_nc_oc=AdnhsnZmP5pemrRZxJoXkJBxUZTa8pppr6LgvUtQSnOym0w20aortUcgN2Qngm8Uuut6z2wDSu_AgWcOXA3I9KqD&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=PIMHG5Hji3UvLQy2uqxZRA&_nc_ss=8&oh=00_Afu86kRF4MPoLAkZrgBczu4aw-pfdwuuvSQhgsXGKiv9aQ&oe=69A9E23A" alt="thumb" /></td>
+              <td class="order-col" data-val="41">#41</td>
+              <td data-val="https://www.facebook.com/reel/1033948025415013"><a href="https://www.facebook.com/reel/1033948025415013" target="_blank">View Reel</a></td>
+              <td data-val="138">138</td>
+              <td data-val="138"><strong>138</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/560046559_676070122205067_9214075759383012784_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=w-25Q13c44UQ7kNvwHuQ2ct&_nc_oc=AdnMiqSdZadxT5FeOXkIrI_z2HmU-qJyXi0Qa3ag5sxHLGxJw8Jwqyorsw3mNajJeLCN1QJ_xMc_bglBeWDc2aFw&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=PIMHG5Hji3UvLQy2uqxZRA&_nc_ss=8&oh=00_Afvo1st1DZfxe6zefwP_EKtg2cAeUcT19AKKED9qXg-Q8g&oe=69A9EBA0" alt="thumb" /></td>
+              <td class="order-col" data-val="40">#40</td>
+              <td data-val="https://www.facebook.com/reel/1985196382246091"><a href="https://www.facebook.com/reel/1985196382246091" target="_blank">View Reel</a></td>
+              <td data-val="2.5K">2.5K</td>
+              <td data-val="2500"><strong>2,500</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/559893802_1821221955423491_1436334304572430515_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=B0Xyxg8SOcoQ7kNvwGimyxS&_nc_oc=AdnNdRADJE3pzmiA1dPwizSOR7BAqklcrqD7QFHAHkh9kVLMIKVECrs1-_U1jL5EH3kXLqduqompjPnnu7fxfmxj&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=PIMHG5Hji3UvLQy2uqxZRA&_nc_ss=8&oh=00_AftC7K8MGa_XSo-57kLZ132oS_Fclge_w7pnr-6qO9adrA&oe=69A9DA53" alt="thumb" /></td>
+              <td class="order-col" data-val="39">#39</td>
+              <td data-val="https://www.facebook.com/reel/641984052125924"><a href="https://www.facebook.com/reel/641984052125924" target="_blank">View Reel</a></td>
+              <td data-val="120">120</td>
+              <td data-val="120"><strong>120</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/558712595_1421118275654223_263084681951958646_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=101&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=UTDtmtEmGiYQ7kNvwHXFUBI&_nc_oc=AdljZpTpgUEwXJzUriyNsYbddjmuEwh5TyQr1j11eR47EBYNp26HZVJ5Bsq3TrTjz1i8KNDGiAk7Jqu4m-qwMfaj&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=PIMHG5Hji3UvLQy2uqxZRA&_nc_ss=8&oh=00_AftjxvVQ6ngw5TBiS5DxamUUeM1gX9KQg-9iZzoHZE4Odg&oe=69AA0AAB" alt="thumb" /></td>
+              <td class="order-col" data-val="38">#38</td>
+              <td data-val="https://www.facebook.com/reel/3728456373954481"><a href="https://www.facebook.com/reel/3728456373954481" target="_blank">View Reel</a></td>
+              <td data-val="75">75</td>
+              <td data-val="75"><strong>75</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/558873995_1575517403608316_1127338565430296958_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=yts6Zn3xahYQ7kNvwEgVT6e&_nc_oc=AdnNi1ely9_QzwzbDX4LlSPMhDC3mfLxUpvsOxpWegB4pEPTFEwNVXa-DrhaW_rzDCxupmtQYA1PwPvl3L3yYi8s&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=xzOZy_VO3m29E3uDD7Ub8w&_nc_ss=8&oh=00_Afu6t6hzCLg0HeEI1Gs2BFLBm5mvFXKoe53dHqOAcFQDvA&oe=69A9E2CF" alt="thumb" /></td>
+              <td class="order-col" data-val="37">#37</td>
+              <td data-val="https://www.facebook.com/reel/1349594543251270"><a href="https://www.facebook.com/reel/1349594543251270" target="_blank">View Reel</a></td>
+              <td data-val="98">98</td>
+              <td data-val="98"><strong>98</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/559820055_813763394358984_5383608457523820098_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=c44d43&_nc_ohc=LLSKX6_RcPgQ7kNvwFKWSH2&_nc_oc=AdlY8MkEPm6XzOotG-d0NmTefUKlGI5cyyLy4OW620iiUoy2QktVJpaxrabPXBBv6_OI1ARB2YcxyYIVJQO0nsh7&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=xzOZy_VO3m29E3uDD7Ub8w&_nc_ss=8&oh=00_AfvU5e5VTS4fSl4pZ4fp1NtuXZ_QPK9OXlMVmBhA9pMb6A&oe=69A9D954" alt="thumb" /></td>
+              <td class="order-col" data-val="36">#36</td>
+              <td data-val="https://www.facebook.com/reel/794563586876424"><a href="https://www.facebook.com/reel/794563586876424" target="_blank">View Reel</a></td>
+              <td data-val="93">93</td>
+              <td data-val="93"><strong>93</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/558968233_733814953029456_1828648119900433574_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=c44d43&_nc_ohc=FSzUGreL2PUQ7kNvwF11AOt&_nc_oc=AdlrD0X2Hx-E6tLLz_l3xmtAH9qO-51Z1kdlWHmo-MyYYipoyvqfWrmxPA8Pj1sajTIFm-uODbqE9ZH7hRku77l5&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=xzOZy_VO3m29E3uDD7Ub8w&_nc_ss=8&oh=00_AfvCJApuvEPWmLGmAlYiABjkl5d_rh0GqASOAK4kuO68lg&oe=69A9D9F3" alt="thumb" /></td>
+              <td class="order-col" data-val="35">#35</td>
+              <td data-val="https://www.facebook.com/reel/1300856861582629"><a href="https://www.facebook.com/reel/1300856861582629" target="_blank">View Reel</a></td>
+              <td data-val="89">89</td>
+              <td data-val="89"><strong>89</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/558318479_1850785068809597_6899263861484919224_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=111&ccb=1-7&_nc_sid=c44d43&_nc_ohc=RWlImt4xkMEQ7kNvwFjvePr&_nc_oc=Adn35-K4gwSj0BRN1OKGAaMA6X5Ot0LW8dZNteLkHkZbknjDLanVTsA8I3etfsr1wEbR19beqFWYzpsfixquFjya&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=xzOZy_VO3m29E3uDD7Ub8w&_nc_ss=8&oh=00_Aft2elIXN6S1CKh6xbGfFAMgOR16BUM7PpdwKd_iju4s-w&oe=69A9D572" alt="thumb" /></td>
+              <td class="order-col" data-val="34">#34</td>
+              <td data-val="https://www.facebook.com/reel/1076429491229302"><a href="https://www.facebook.com/reel/1076429491229302" target="_blank">View Reel</a></td>
+              <td data-val="97">97</td>
+              <td data-val="97"><strong>97</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/556902904_1102570061858682_3033559738718792926_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=c44d43&_nc_ohc=-m8gMN8rX5sQ7kNvwFLsePw&_nc_oc=AdltOUkYVGwQ0wS4h6iAodr9zjFxNpFH-4QYTlQqupf_iUncc1w4ofy-YDdykdZAN3gcNofhJwMy4oRiVuDLs170&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=xzOZy_VO3m29E3uDD7Ub8w&_nc_ss=8&oh=00_AfutqEPHyqn44nY0Od5DV6DXoiz-fGBYCaJfOci7oYlSMA&oe=69A9FD87" alt="thumb" /></td>
+              <td class="order-col" data-val="33">#33</td>
+              <td data-val="https://www.facebook.com/reel/1276794134128476"><a href="https://www.facebook.com/reel/1276794134128476" target="_blank">View Reel</a></td>
+              <td data-val="78">78</td>
+              <td data-val="78"><strong>78</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/557175189_824668760093592_1483813956661099696_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=105&ccb=1-7&_nc_sid=c44d43&_nc_ohc=zX2ulMNSvbsQ7kNvwFie9LB&_nc_oc=AdniCXRiT0jGpkd6kpMrEGOEHkIB2APNjkC_bnAwPv3khA-XErd9I_lh3KA1noJ4lQl1jhtLfjU_5YjZxYjGE_Lv&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=xzOZy_VO3m29E3uDD7Ub8w&_nc_ss=8&oh=00_AfuqxPtfVrCYMg1TEeGfeKNxTV6oC5qKapBxN29P8finrw&oe=69A9EDF0" alt="thumb" /></td>
+              <td class="order-col" data-val="32">#32</td>
+              <td data-val="https://www.facebook.com/reel/1122136960055337"><a href="https://www.facebook.com/reel/1122136960055337" target="_blank">View Reel</a></td>
+              <td data-val="101">101</td>
+              <td data-val="101"><strong>101</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/556432635_1296146189216571_2221276099569758614_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=100&ccb=1-7&_nc_sid=c44d43&_nc_ohc=T3f7yy9LBrQQ7kNvwEI7QZx&_nc_oc=AdldtjVNi2rktsLnYcj1dfN4Tnk59ASn7oVmtOMav0aBY4Zg_a6St_9Tw8RH3t5QA3_YsMvMgFZbTmE36NXBZ-9d&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=xzOZy_VO3m29E3uDD7Ub8w&_nc_ss=8&oh=00_Aft2kTwuNDtLevD0hIToAsh61noiTgt0OAw1B62Z1UQJXQ&oe=69A9E84C" alt="thumb" /></td>
+              <td class="order-col" data-val="31">#31</td>
+              <td data-val="https://www.facebook.com/reel/768470312743538"><a href="https://www.facebook.com/reel/768470312743538" target="_blank">View Reel</a></td>
+              <td data-val="72">72</td>
+              <td data-val="72"><strong>72</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/556788781_1121953642892161_4340670892789655098_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=100&ccb=1-7&_nc_sid=c44d43&_nc_ohc=0QzOGQYrfRcQ7kNvwGPzSrC&_nc_oc=Adl1QLp5tqamtq8h08KaWa2fLUPZz7BYqMuLag0wyflh7nmxpiliMf686tObBvmV2wUgXEh9X5X34EwQNW1JCEvK&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=xzOZy_VO3m29E3uDD7Ub8w&_nc_ss=8&oh=00_AfufIyX6PTCM3nsoblyqHNnIxdkLEoxX6dh6YD6YiPWUqQ&oe=69A9DB30" alt="thumb" /></td>
+              <td class="order-col" data-val="30">#30</td>
+              <td data-val="https://www.facebook.com/reel/1277816747423189"><a href="https://www.facebook.com/reel/1277816747423189" target="_blank">View Reel</a></td>
+              <td data-val="93">93</td>
+              <td data-val="93"><strong>93</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/556123396_1069805558563138_5139975443723348124_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=101&ccb=1-7&_nc_sid=c44d43&_nc_ohc=LessRK-YTg0Q7kNvwGMhvXe&_nc_oc=Admuflu2DlxV2nslkx2xQiktey9I0UfNm7oTYcWasgD5_FyP7EqufTNeeLS6QkSlneLh0oj0ywpqn58VmG3iMaAh&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=xzOZy_VO3m29E3uDD7Ub8w&_nc_ss=8&oh=00_Afv-QQeIybYDJvkZiyM0kh89Cvogp7IwfgrvTc6NTkq9Aw&oe=69A9FEE1" alt="thumb" /></td>
+              <td class="order-col" data-val="29">#29</td>
+              <td data-val="https://www.facebook.com/reel/1131374175106412"><a href="https://www.facebook.com/reel/1131374175106412" target="_blank">View Reel</a></td>
+              <td data-val="50">50</td>
+              <td data-val="50"><strong>50</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/556974084_1134041218166555_7924524513639510973_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=111&ccb=1-7&_nc_sid=c44d43&_nc_ohc=Kva1_pldsMsQ7kNvwF3GLmG&_nc_oc=AdkkEzMvzqg5MGrfM0heG6l1uxB4P2vSCmSeLFnnyqiNdM8hW9hfSDR9cwit9qY5Jls17s8fYrggWlsohjkcBI_M&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=xzOZy_VO3m29E3uDD7Ub8w&_nc_ss=8&oh=00_Afv5KPdx-9dKpLAMQecqJ3SMnnAOX6Yyki5vy1K4ccpGrw&oe=69A9FFEA" alt="thumb" /></td>
+              <td class="order-col" data-val="28">#28</td>
+              <td data-val="https://www.facebook.com/reel/1314770520368417"><a href="https://www.facebook.com/reel/1314770520368417" target="_blank">View Reel</a></td>
+              <td data-val="64">64</td>
+              <td data-val="64"><strong>64</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/554628577_1134259424754488_4712970849462532063_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=c44d43&_nc_ohc=BABgilxUJUQQ7kNvwGb7ogQ&_nc_oc=AdnHZGhfgkaPvte8JLkR4grpEcUeMPPtbON6sPx7PkoBQ0V0KZbOcywnWrGtymS9pqyem5eiOzAf0TygpcEICpq2&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=Zz5DkuRLDUOoJHQ-VonMnw&_nc_ss=8&oh=00_AfvvSPgMMeKqLuzCbM_-lLIH-oo-wJ-ZaQGe0HsQaon-uA&oe=69A9DCE8" alt="thumb" /></td>
+              <td class="order-col" data-val="27">#27</td>
+              <td data-val="https://www.facebook.com/reel/1490714715456420"><a href="https://www.facebook.com/reel/1490714715456420" target="_blank">View Reel</a></td>
+              <td data-val="64">64</td>
+              <td data-val="64"><strong>64</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/554841512_1923803951735679_3633298464803353149_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=c44d43&_nc_ohc=tYiQl93jsn0Q7kNvwFeYx03&_nc_oc=Adk6FKvfoiXds-Hqs-3tmXPkt4tblpQDd8H6gkP6W0RlHstqhWvdUqC7S0UqNJE8RABWXar_oRY76YmU-fFXIqH1&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=Zz5DkuRLDUOoJHQ-VonMnw&_nc_ss=8&oh=00_AfsRkl6BV8RI0HFsJr4PHB4XJ3g5JVXDchCXGWu_IjJr_w&oe=69A9E685" alt="thumb" /></td>
+              <td class="order-col" data-val="26">#26</td>
+              <td data-val="https://www.facebook.com/reel/3189932504490315"><a href="https://www.facebook.com/reel/3189932504490315" target="_blank">View Reel</a></td>
+              <td data-val="64">64</td>
+              <td data-val="64"><strong>64</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/553542809_669588059551676_5182072870718299117_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=105&ccb=1-7&_nc_sid=c44d43&_nc_ohc=w205VXONZlEQ7kNvwFkYmH-&_nc_oc=Adk7dvOdk-f3r-KO28Lee9Ks_xwxMFayeYYhgu7cWYB31BLBGeyZV7FH7dvXR_NUqNRrw8da-KHa0Jp9oxgqJPmm&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=Zz5DkuRLDUOoJHQ-VonMnw&_nc_ss=8&oh=00_AfvAIRZ_6IKgOAKRi5AOx-1Z_N4O89GyBO2SENFyw6FnIw&oe=69A9F781" alt="thumb" /></td>
+              <td class="order-col" data-val="25">#25</td>
+              <td data-val="https://www.facebook.com/reel/1311125877143006"><a href="https://www.facebook.com/reel/1311125877143006" target="_blank">View Reel</a></td>
+              <td data-val="54">54</td>
+              <td data-val="54"><strong>54</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/554288017_1325681419219865_4063471507707208105_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=c44d43&_nc_ohc=L9ZuwDv7BC8Q7kNvwE5Cpbx&_nc_oc=AdlgzKJCuYhjTYnDxgmCXtlUPlm-fO3RN2RVd_eLw6HJ2Me3F1spOzKpAmpO50Owq7v1rBR3JW6O5W-e__zNfEot&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=Zz5DkuRLDUOoJHQ-VonMnw&_nc_ss=8&oh=00_AfsNYV90pCEIyir2Lr9NSUA6RHBjeESsWtcr6bNm-vim1g&oe=69A9D522" alt="thumb" /></td>
+              <td class="order-col" data-val="24">#24</td>
+              <td data-val="https://www.facebook.com/reel/1127366009504909"><a href="https://www.facebook.com/reel/1127366009504909" target="_blank">View Reel</a></td>
+              <td data-val="42">42</td>
+              <td data-val="42"><strong>42</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/553752725_642297658708291_2606315440932576523_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=102&ccb=1-7&_nc_sid=c44d43&_nc_ohc=5fprrGRaxr8Q7kNvwH9ZTPh&_nc_oc=AdlK-wmzGt_YOIcxIDNsGMvw-xLWw7MTUzvQEqwEvi8adIG4rwpZHy-nLtAe2-Pm5PSEgtauWZtw9yNjoLb7MLRe&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=Zz5DkuRLDUOoJHQ-VonMnw&_nc_ss=8&oh=00_AfsiJ-hC-FNop-IkbA1TFEgWxEiiDqPD2zHpOl-z5htQkw&oe=69A9F692" alt="thumb" /></td>
+              <td class="order-col" data-val="23">#23</td>
+              <td data-val="https://www.facebook.com/reel/1348620283283775"><a href="https://www.facebook.com/reel/1348620283283775" target="_blank">View Reel</a></td>
+              <td data-val="65">65</td>
+              <td data-val="65"><strong>65</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/553495886_1112895647487914_2544423682024388935_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=100&ccb=1-7&_nc_sid=c44d43&_nc_ohc=foLAgnYqc0gQ7kNvwGrRcZP&_nc_oc=AdnUGUWkrxzymyCAFVIOTfOs9GhSkhlewC0XCIfH7lpz3RzqQpyiNSoJ5UZ2SQ9R2oMwnGQdDBbgqb8G0r2BO5cc&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=Zz5DkuRLDUOoJHQ-VonMnw&_nc_ss=8&oh=00_AfuRDEPqemGwmqqgdhk0tACsETCeQ887tnrbTq6DsvPTjg&oe=69AA033B" alt="thumb" /></td>
+              <td class="order-col" data-val="22">#22</td>
+              <td data-val="https://www.facebook.com/reel/1128155408843441"><a href="https://www.facebook.com/reel/1128155408843441" target="_blank">View Reel</a></td>
+              <td data-val="53">53</td>
+              <td data-val="53"><strong>53</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/552692143_639968805853867_7377510958263927384_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=c44d43&_nc_ohc=s4cZHXOdkd8Q7kNvwGIi-8p&_nc_oc=Adl7ANZH3XRgowKpWb5yqoB89b0_ZnorcSFT3_fuXBsqBZzFcp-J3kKpV9aVwCSTSWqA7chtW9BgcEcGNwIQLdQe&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=Zz5DkuRLDUOoJHQ-VonMnw&_nc_ss=8&oh=00_AfsE9TTJw-FOkTeMsHwto7zVqIFd_zUeM8GZjiMw4q_woQ&oe=69AA0257" alt="thumb" /></td>
+              <td class="order-col" data-val="21">#21</td>
+              <td data-val="https://www.facebook.com/reel/1565968514390153"><a href="https://www.facebook.com/reel/1565968514390153" target="_blank">View Reel</a></td>
+              <td data-val="64">64</td>
+              <td data-val="64"><strong>64</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/552967975_1654604678832323_2606957523117455834_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=102&ccb=1-7&_nc_sid=c44d43&_nc_ohc=luK5vmGbGjwQ7kNvwHDDT1b&_nc_oc=AdlY-zZLs8zBq2Ksn5O0_q_Voy427x5FnUDG4khdYlrwu1vkJANEpDqIGYnBtUJzCVmv3iM-BDUqdXfgMiZoblIA&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=Zz5DkuRLDUOoJHQ-VonMnw&_nc_ss=8&oh=00_AftjlOa8SDwm3gR6aeyEcX2Y3dpmYPsEIRVrXQSI8N5MFw&oe=69A9F7A0" alt="thumb" /></td>
+              <td class="order-col" data-val="20">#20</td>
+              <td data-val="https://www.facebook.com/reel/1358939662229017"><a href="https://www.facebook.com/reel/1358939662229017" target="_blank">View Reel</a></td>
+              <td data-val="34">34</td>
+              <td data-val="34"><strong>34</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/551974219_793784603054226_7564284649734994744_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=c44d43&_nc_ohc=AoZf9uVpO9kQ7kNvwFp-ArI&_nc_oc=Adk8rWJ7zlKBnyLCcWHAiSdVNKCoGZU6b7LYTVD9sBeZOommEygdlx_FKSe64GjnqUm0EUNzQ4QBwD3fyIyAUsL0&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=Zz5DkuRLDUOoJHQ-VonMnw&_nc_ss=8&oh=00_Afsl4b2h9fHKV7NdyomorubNC54ul-p1VvycF2LuPW1FaQ&oe=69A9FB6A" alt="thumb" /></td>
+              <td class="order-col" data-val="19">#19</td>
+              <td data-val="https://www.facebook.com/reel/1902920783604580"><a href="https://www.facebook.com/reel/1902920783604580" target="_blank">View Reel</a></td>
+              <td data-val="37">37</td>
+              <td data-val="37"><strong>37</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/551110212_770168839199630_1907742167599324056_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=111&ccb=1-7&_nc_sid=c44d43&_nc_ohc=HYQ4B2y3UM4Q7kNvwFEhpug&_nc_oc=Admblv-XlzMol3DsAaCPDiJcvleTcuAD165lvLxp04aqFKeD7P2kV2PCEgj2FH9jiWyIhhz2JriEVAYcVaaHMHD1&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=Zz5DkuRLDUOoJHQ-VonMnw&_nc_ss=8&oh=00_AftZbheJFyFCmtJFPRPyeb-bCtwy8VRnGJ6WOEcv-XDVnA&oe=69A9D942" alt="thumb" /></td>
+              <td class="order-col" data-val="18">#18</td>
+              <td data-val="https://www.facebook.com/reel/781828377923754"><a href="https://www.facebook.com/reel/781828377923754" target="_blank">View Reel</a></td>
+              <td data-val="34">34</td>
+              <td data-val="34"><strong>34</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/550677959_24426289030369160_6664449964837429264_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=c44d43&_nc_ohc=Xc-feFNXja0Q7kNvwHc_eiM&_nc_oc=AdmYgCyCoQ47b1jABUcw9X9dVM1UMv7mAqO90xlsSpEO_fJmkIkzcEFzYJxN3H3Ogl4r5AJCwCZL5NpH7HYVP8o-&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=YVQHW49VhXUDmF941EBUQA&_nc_ss=8&oh=00_AfvNZZwu403QNdXBTxLvfVC07pEtHT7m0EiAqZdAPPu2bQ&oe=69A9E707" alt="thumb" /></td>
+              <td class="order-col" data-val="17">#17</td>
+              <td data-val="https://www.facebook.com/reel/739257679111488"><a href="https://www.facebook.com/reel/739257679111488" target="_blank">View Reel</a></td>
+              <td data-val="22">22</td>
+              <td data-val="22"><strong>22</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/549207327_4062959523958725_6443880880186679087_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=c44d43&_nc_ohc=gN6gbbDMVCAQ7kNvwHKuAJ2&_nc_oc=AdnpZBQHiGAHMNfbGq4f5UtAIVnuyjyIcH5Qby0qRKn_eAUovcDShsxGhym3Ho2BGYxQ3x78vfFqN5UBB2zOKVV9&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=YVQHW49VhXUDmF941EBUQA&_nc_ss=8&oh=00_AfvJ_MHKKm_nbHL8LDL9bZdcYY6g2lb45myHXRSIO7K4cg&oe=69A9F246" alt="thumb" /></td>
+              <td class="order-col" data-val="16">#16</td>
+              <td data-val="https://www.facebook.com/reel/816338801053188"><a href="https://www.facebook.com/reel/816338801053188" target="_blank">View Reel</a></td>
+              <td data-val="64">64</td>
+              <td data-val="64"><strong>64</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/549400243_2042792589873947_329954079989201739_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=c44d43&_nc_ohc=nJ42Lno55W8Q7kNvwEZnBMs&_nc_oc=AdlB8PoSSZWoyqgjh8Ad20w9FU6XbgWDqu8_r4maRVus22tuYLI0z_CL5bcRMShTjPm_JG8Y6mwQ_Xj34Uu3ph44&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=YVQHW49VhXUDmF941EBUQA&_nc_ss=8&oh=00_Afvx1xLQ0_7HYNv7veaVc9BJNJezzph287BCLbmnzHLy9A&oe=69A9FD7B" alt="thumb" /></td>
+              <td class="order-col" data-val="15">#15</td>
+              <td data-val="https://www.facebook.com/reel/692619303842787"><a href="https://www.facebook.com/reel/692619303842787" target="_blank">View Reel</a></td>
+              <td data-val="133">133</td>
+              <td data-val="133"><strong>133</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/548929163_2236534746771523_5696518227780787102_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=c44d43&_nc_ohc=MNqAWojb7tAQ7kNvwGNxNP1&_nc_oc=AdmEUxP8hfScO0ZBVTtEGt95-PxVSVbIdL_YZssxzj37AEFhxyuUb46Up5RQfaHfaPBaLc305duTLKwvxryhatJG&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=YVQHW49VhXUDmF941EBUQA&_nc_ss=8&oh=00_AfsScVc4lUy3BxjN5xY3Azvzbo_kRWaPhzLnSUmoYcxG6w&oe=69A9F96B" alt="thumb" /></td>
+              <td class="order-col" data-val="14">#14</td>
+              <td data-val="https://www.facebook.com/reel/1251269267016747"><a href="https://www.facebook.com/reel/1251269267016747" target="_blank">View Reel</a></td>
+              <td data-val="28">28</td>
+              <td data-val="28"><strong>28</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/548613787_4451673358411262_145447046936327910_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=104&ccb=1-7&_nc_sid=c44d43&_nc_ohc=grF56RIhyeYQ7kNvwGvY_RA&_nc_oc=AdmvshojjI2L7ivfEwFYHoyFqfF4e2PekybyVFe_-Zh1XG4PrrhztOhyTHYPQTKY6OATqr42DqKhqEwGBA-e6TmS&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=YVQHW49VhXUDmF941EBUQA&_nc_ss=8&oh=00_Afv_aREE9z44MF_94LUXoCMd-TcOT74wY9cI1Wx69R8ylw&oe=69A9FAEA" alt="thumb" /></td>
+              <td class="order-col" data-val="13">#13</td>
+              <td data-val="https://www.facebook.com/reel/773487835284197"><a href="https://www.facebook.com/reel/773487835284197" target="_blank">View Reel</a></td>
+              <td data-val="26">26</td>
+              <td data-val="26"><strong>26</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/546643361_823089997547221_1787001045579587394_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=105&ccb=1-7&_nc_sid=c44d43&_nc_ohc=aHESWNwFqoAQ7kNvwG2kxR3&_nc_oc=Adkye9UImsaGGFNvurWIwM76Buw7ZQOpF9B0ckn8v8agEoLZaa0_Aj_5L5oQkAdDbnHb08zmOn4ukI08hjg6PJjH&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=YVQHW49VhXUDmF941EBUQA&_nc_ss=8&oh=00_Afv-cBz08iPXbAMUrmL17t6FWeGJoOouHKD616282ZVtQA&oe=69A9EC3C" alt="thumb" /></td>
+              <td class="order-col" data-val="12">#12</td>
+              <td data-val="https://www.facebook.com/reel/2612446029088016"><a href="https://www.facebook.com/reel/2612446029088016" target="_blank">View Reel</a></td>
+              <td data-val="19">19</td>
+              <td data-val="19"><strong>19</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/546230892_1775400067186999_3999437893116557299_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=c44d43&_nc_ohc=S2emTUu5dhUQ7kNvwFW8hPk&_nc_oc=AdmWaYklJnj-MsGfr6xvge2zdLAvOWYuouqoNJZDaBdWabXZ6c6TOQ6_brR4kfXcZm5o7n73oF794p_C2S3co7u5&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=YVQHW49VhXUDmF941EBUQA&_nc_ss=8&oh=00_AfstYkzavi_WU4T3xLbc77Gje7H0itBp4DxyeBrHakcmyQ&oe=69A9EC5D" alt="thumb" /></td>
+              <td class="order-col" data-val="11">#11</td>
+              <td data-val="https://www.facebook.com/reel/803434588917135"><a href="https://www.facebook.com/reel/803434588917135" target="_blank">View Reel</a></td>
+              <td data-val="22">22</td>
+              <td data-val="22"><strong>22</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/544113268_1862419301031664_4540439178184729929_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=105&ccb=1-7&_nc_sid=c44d43&_nc_ohc=N_s-EA66LzoQ7kNvwEphStI&_nc_oc=AdkurWpy0j32Z_-wFJx1aHM21MlEdW77vMHdxMDL3ptiAK3zc3bb1MYA1crOaKikGqekH2KqCW1HYLsBLg0Quu_R&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=YVQHW49VhXUDmF941EBUQA&_nc_ss=8&oh=00_Aftege7DPLrT-6xEbX6bGGangudcIhQwWThsl3t_yFIvCA&oe=69A9E5F3" alt="thumb" /></td>
+              <td class="order-col" data-val="10">#10</td>
+              <td data-val="https://www.facebook.com/reel/991256046436418"><a href="https://www.facebook.com/reel/991256046436418" target="_blank">View Reel</a></td>
+              <td data-val="29">29</td>
+              <td data-val="29"><strong>29</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/544818006_1109979300708754_4179180795904851330_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=109&ccb=1-7&_nc_sid=c44d43&_nc_ohc=uAYOoeqCXv8Q7kNvwHYDjk2&_nc_oc=Adk4E2H_ihcKkDmSKyFru7rcQCCxjfGogc46J8mzc5aMOukOyC7utCGnSDzz6-FwOy3hq5MZk0QPhZ4LdBOdQvGJ&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=YVQHW49VhXUDmF941EBUQA&_nc_ss=8&oh=00_AfsgcN50srF9GWHFCOvKO_hayy0d9mxdvSreV5VvbvIYvQ&oe=69AA020B" alt="thumb" /></td>
+              <td class="order-col" data-val="9">#9</td>
+              <td data-val="https://www.facebook.com/reel/791915286716007"><a href="https://www.facebook.com/reel/791915286716007" target="_blank">View Reel</a></td>
+              <td data-val="16">16</td>
+              <td data-val="16"><strong>16</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.82787-10/544088962_18537483475030343_878276831021322477_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=107&ccb=1-7&_nc_sid=c44d43&_nc_ohc=PpKGiIfiKuQQ7kNvwHNwzG7&_nc_oc=Adl9Z4gPFVead3y-wENkyX5qBI_skd82sjQbjbeth74NV6Y2xAExbAOntKyEyg7mZopC1INm0mByxfeOltoZ2Jcr&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=YVQHW49VhXUDmF941EBUQA&_nc_ss=8&oh=00_AfvLQshtU6SGIYEDQWZRx3sgixzml6uv_ceGZZtE9wN2_A&oe=69A9E0A6" alt="thumb" /></td>
+              <td class="order-col" data-val="8">#8</td>
+              <td data-val="https://www.facebook.com/reel/756377287197383"><a href="https://www.facebook.com/reel/756377287197383" target="_blank">View Reel</a></td>
+              <td data-val="18">18</td>
+              <td data-val="18"><strong>18</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/544078200_1070310875317891_4041041655446118872_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=102&ccb=1-7&_nc_sid=c44d43&_nc_ohc=_62Rc8VSJ2UQ7kNvwHP8XtD&_nc_oc=AdlWxFUs4JnTyWp6ISvk_8BHEbVArOUgLM0DDvDEPRRQQ5avzXSwlgOwRalPiDqH917pgRjC_eadu-G3IVxJYYeu&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=S1T6QcV9sEV8taSpcq9jDA&_nc_ss=8&oh=00_AfvtYikDxxU2_bWt4O6Xzstbj4QyHCSJZpjy-NHqmtbqKA&oe=69A9F763" alt="thumb" /></td>
+              <td class="order-col" data-val="7">#7</td>
+              <td data-val="https://www.facebook.com/reel/1334402194698840"><a href="https://www.facebook.com/reel/1334402194698840" target="_blank">View Reel</a></td>
+              <td data-val="29">29</td>
+              <td data-val="29"><strong>29</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/546230005_2914966148706876_8104815009143249611_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=c44d43&_nc_ohc=p4D6TKSnHjMQ7kNvwEYs8Bv&_nc_oc=Adl4n9CawQJXTM3_sFr9FzHNzsKl7qLOZuyDTlGE2NQWpyBPEVi2B7lholgT_6nmKqqhMYrgTq2KLzOwtHtvpCEB&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=S1T6QcV9sEV8taSpcq9jDA&_nc_ss=8&oh=00_Afua-BNRO_J1h7Y2O0-CDgs4l46m-_0D6almDCZXX5SzPA&oe=69A9E768" alt="thumb" /></td>
+              <td class="order-col" data-val="6">#6</td>
+              <td data-val="https://www.facebook.com/reel/1928251264635463"><a href="https://www.facebook.com/reel/1928251264635463" target="_blank">View Reel</a></td>
+              <td data-val="20">20</td>
+              <td data-val="20"><strong>20</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-4.fna.fbcdn.net/v/t51.71878-10/542761299_1564685924525882_7217606395469346863_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=101&ccb=1-7&_nc_sid=c44d43&_nc_ohc=aTzx8HWCel8Q7kNvwEIstEF&_nc_oc=AdkEgcESeA-8hzrsDqg1e9fGrjBUzQwodMzH2_uLK2uIiECIn39v85M7Xje2O0sQTAUZsVMxsvbNWv7oF9Tl9ffv&_nc_zt=23&_nc_ht=scontent.fbud7-4.fna&_nc_gid=S1T6QcV9sEV8taSpcq9jDA&_nc_ss=8&oh=00_AfuDXEacfsl0iP5EpcyPl_FmmlNAv76yVaKdP1VXdjRWjg&oe=69A9FE4C" alt="thumb" /></td>
+              <td class="order-col" data-val="5">#5</td>
+              <td data-val="https://www.facebook.com/reel/2007557763315003"><a href="https://www.facebook.com/reel/2007557763315003" target="_blank">View Reel</a></td>
+              <td data-val="18">18</td>
+              <td data-val="18"><strong>18</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/542478691_1847058362860866_3273286825904872162_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=c44d43&_nc_ohc=721EGmZsqagQ7kNvwEHurpa&_nc_oc=Adl9SaqpECA8BK9VN1Y3XidcYIbf05sdRJlPAWaGVgdsobnscAUvaPRJC1ir1_-Q50eTt5OztLG2RHhX0D3h04il&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=S1T6QcV9sEV8taSpcq9jDA&_nc_ss=8&oh=00_AfviW0BRUAj0-UaayT_DQznCR3ROarx9954vCqGbJIDTIw&oe=69A9F64D" alt="thumb" /></td>
+              <td class="order-col" data-val="4">#4</td>
+              <td data-val="https://www.facebook.com/reel/2722715198062447"><a href="https://www.facebook.com/reel/2722715198062447" target="_blank">View Reel</a></td>
+              <td data-val="15">15</td>
+              <td data-val="15"><strong>15</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/540692173_1497640814745199_1864400156230929510_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=103&ccb=1-7&_nc_sid=c44d43&_nc_ohc=kuBv3MpT4zQQ7kNvwHRIKJf&_nc_oc=AdmJQCeY5FUaYUyCHEvZ_hMlZ3g0MtcPOc6T-sw2ihP2DnhtisKRxaNYQNMSNyeMfDYW1uoU2tZ1sBOZeglSQnEP&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=S1T6QcV9sEV8taSpcq9jDA&_nc_ss=8&oh=00_AfvFKXQIfyHdcXrUGfjFtc4H-HiAUIJ6NP3Lu0ax4ei7iA&oe=69A9E9F3" alt="thumb" /></td>
+              <td class="order-col" data-val="3">#3</td>
+              <td data-val="https://www.facebook.com/reel/627433666823095"><a href="https://www.facebook.com/reel/627433666823095" target="_blank">View Reel</a></td>
+              <td data-val="13">13</td>
+              <td data-val="13"><strong>13</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.71878-10/542393956_1114790700041861_4625000756793569955_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=102&ccb=1-7&_nc_sid=c44d43&_nc_ohc=ydBUSgKODfwQ7kNvwFXXAFj&_nc_oc=AdnzFRyfCyT5JLjETx40byHgfUh_ccERqcxGHx9cvSa_NloJ0nqpNdRxW75q-qSVPdtTr8U7ZJ30QkYPAdBWBEuB&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=S1T6QcV9sEV8taSpcq9jDA&_nc_ss=8&oh=00_AfsfoEGHdX-JrK1oBIIQ8Z8-gbKgrm3ApinvpBdkR5XqMQ&oe=69A9DC3B" alt="thumb" /></td>
+              <td class="order-col" data-val="2">#2</td>
+              <td data-val="https://www.facebook.com/reel/1167381308556712"><a href="https://www.facebook.com/reel/1167381308556712" target="_blank">View Reel</a></td>
+              <td data-val="20">20</td>
+              <td data-val="20"><strong>20</strong></td>
+            </tr>
+      
+            <tr>
+              <td><img src="https://scontent.fbud7-3.fna.fbcdn.net/v/t51.82787-10/539896211_18535776427030343_2489791072158599631_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=110&ccb=1-7&_nc_sid=c44d43&_nc_ohc=D0if2hhaFcwQ7kNvwE9-sev&_nc_oc=AdkFN61obcKQfy_wFVLefl53PNdC5nSYIMlZzTEQaHnjoEWjecQy6g8OWG8_O3oiUjhUi3095PfZarsxjgnkJWJi&_nc_zt=23&_nc_ht=scontent.fbud7-3.fna&_nc_gid=S1T6QcV9sEV8taSpcq9jDA&_nc_ss=8&oh=00_AfvqdCa-hcRKf2cw-YV27Nb9pKNSCMVXl5qfLBpvPgGgJw&oe=69A9E9DE" alt="thumb" /></td>
+              <td class="order-col" data-val="1">#1</td>
+              <td data-val="https://www.facebook.com/reel/24448597288139431"><a href="https://www.facebook.com/reel/24448597288139431" target="_blank">View Reel</a></td>
+              <td data-val="15">15</td>
+              <td data-val="15"><strong>15</strong></td>
+            </tr>
+      
+          </table>
+        </div>
+        <script>
+          const ctx = document.getElementById('viewsChart').getContext('2d');
+          const chartUrls = ["https://www.facebook.com/reel/24448597288139431","https://www.facebook.com/reel/1167381308556712","https://www.facebook.com/reel/627433666823095","https://www.facebook.com/reel/2722715198062447","https://www.facebook.com/reel/2007557763315003","https://www.facebook.com/reel/1928251264635463","https://www.facebook.com/reel/1334402194698840","https://www.facebook.com/reel/756377287197383","https://www.facebook.com/reel/791915286716007","https://www.facebook.com/reel/991256046436418","https://www.facebook.com/reel/803434588917135","https://www.facebook.com/reel/2612446029088016","https://www.facebook.com/reel/773487835284197","https://www.facebook.com/reel/1251269267016747","https://www.facebook.com/reel/692619303842787","https://www.facebook.com/reel/816338801053188","https://www.facebook.com/reel/739257679111488","https://www.facebook.com/reel/781828377923754","https://www.facebook.com/reel/1902920783604580","https://www.facebook.com/reel/1358939662229017","https://www.facebook.com/reel/1565968514390153","https://www.facebook.com/reel/1128155408843441","https://www.facebook.com/reel/1348620283283775","https://www.facebook.com/reel/1127366009504909","https://www.facebook.com/reel/1311125877143006","https://www.facebook.com/reel/3189932504490315","https://www.facebook.com/reel/1490714715456420","https://www.facebook.com/reel/1314770520368417","https://www.facebook.com/reel/1131374175106412","https://www.facebook.com/reel/1277816747423189","https://www.facebook.com/reel/768470312743538","https://www.facebook.com/reel/1122136960055337","https://www.facebook.com/reel/1276794134128476","https://www.facebook.com/reel/1076429491229302","https://www.facebook.com/reel/1300856861582629","https://www.facebook.com/reel/794563586876424","https://www.facebook.com/reel/1349594543251270","https://www.facebook.com/reel/3728456373954481","https://www.facebook.com/reel/641984052125924","https://www.facebook.com/reel/1985196382246091","https://www.facebook.com/reel/1033948025415013","https://www.facebook.com/reel/776485348597218","https://www.facebook.com/reel/813423474613564","https://www.facebook.com/reel/1135089158569128","https://www.facebook.com/reel/796402856342500","https://www.facebook.com/reel/1996964181097332","https://www.facebook.com/reel/833513785879509","https://www.facebook.com/reel/1238217078349704","https://www.facebook.com/reel/1837778966817029","https://www.facebook.com/reel/24136082049397953","https://www.facebook.com/reel/857211106732625","https://www.facebook.com/reel/802301125726728","https://www.facebook.com/reel/816239420769038","https://www.facebook.com/reel/1472327447179753","https://www.facebook.com/reel/1888878091668242","https://www.facebook.com/reel/2130772454329586","https://www.facebook.com/reel/1566132124746990","https://www.facebook.com/reel/24733099376384222","https://www.facebook.com/reel/801782486355718","https://www.facebook.com/reel/1273940234487743","https://www.facebook.com/reel/803060468997597","https://www.facebook.com/reel/1480609793172587","https://www.facebook.com/reel/1345579967243385","https://www.facebook.com/reel/761179973584676","https://www.facebook.com/reel/1155778309821266","https://www.facebook.com/reel/700182716432801","https://www.facebook.com/reel/661456383512074","https://www.facebook.com/reel/1580979529940448","https://www.facebook.com/reel/1485768239350936","https://www.facebook.com/reel/2230065290822169","https://www.facebook.com/reel/752661174485524","https://www.facebook.com/reel/1506763353889955","https://www.facebook.com/reel/1116486747325719","https://www.facebook.com/reel/1183224253683883","https://www.facebook.com/reel/794656373369546","https://www.facebook.com/reel/1087329806948440","https://www.facebook.com/reel/832652699347700","https://www.facebook.com/reel/1156335969212072","https://www.facebook.com/reel/1352380765747369","https://www.facebook.com/reel/2057644558399683","https://www.facebook.com/reel/795579090028872","https://www.facebook.com/reel/1617671555706968","https://www.facebook.com/reel/1457999509465998","https://www.facebook.com/reel/906352991724455","https://www.facebook.com/reel/2411463579255572","https://www.facebook.com/reel/621572087611947","https://www.facebook.com/reel/811964461760504","https://www.facebook.com/reel/2048385009345953","https://www.facebook.com/reel/1110741597892056","https://www.facebook.com/reel/1751813648853764","https://www.facebook.com/reel/2364625487302980","https://www.facebook.com/reel/763662140041686","https://www.facebook.com/reel/3883373818630901","https://www.facebook.com/reel/1747748025932287","https://www.facebook.com/reel/1977580123088569","https://www.facebook.com/reel/2035692617225924","https://www.facebook.com/reel/1368127251697513","https://www.facebook.com/reel/1366830448368816","https://www.facebook.com/reel/1346517173819196","https://www.facebook.com/reel/1862827668450864","https://www.facebook.com/reel/865284049492825","https://www.facebook.com/reel/1031320459137838","https://www.facebook.com/reel/25015618771440489","https://www.facebook.com/reel/1160736112909904","https://www.facebook.com/reel/1645271850183145","https://www.facebook.com/reel/1568657957892477","https://www.facebook.com/reel/1889565991594286","https://www.facebook.com/reel/1949104816018303","https://www.facebook.com/reel/1190717713257633","https://www.facebook.com/reel/719023734616966","https://www.facebook.com/reel/843906828372181","https://www.facebook.com/reel/1139454968261390","https://www.facebook.com/reel/1192190785813205","https://www.facebook.com/reel/2320756255058598","https://www.facebook.com/reel/1818450742193470","https://www.facebook.com/reel/1257708086183255","https://www.facebook.com/reel/25687182164245684","https://www.facebook.com/reel/2019785075260493","https://www.facebook.com/reel/859836286777390","https://www.facebook.com/reel/1347353167163677","https://www.facebook.com/reel/1199093251827417","https://www.facebook.com/reel/2290796231433350","https://www.facebook.com/reel/3400130790125115","https://www.facebook.com/reel/1406620340978180","https://www.facebook.com/reel/760944139709829","https://www.facebook.com/reel/838198082539284","https://www.facebook.com/reel/4264303603842141","https://www.facebook.com/reel/1201695468144479","https://www.facebook.com/reel/914600361020573","https://www.facebook.com/reel/2056773668455970","https://www.facebook.com/reel/850930381155367","https://www.facebook.com/reel/1775579059772106","https://www.facebook.com/reel/780953855016893","https://www.facebook.com/reel/3111396822402475","https://www.facebook.com/reel/1419367759847735","https://www.facebook.com/reel/1982521019311750","https://www.facebook.com/reel/864147313087946","https://www.facebook.com/reel/1372564954195121","https://www.facebook.com/reel/1217605093893060","https://www.facebook.com/reel/1411883127006121","https://www.facebook.com/reel/1229725159138116","https://www.facebook.com/reel/1395508022045076","https://www.facebook.com/reel/1511769686589508","https://www.facebook.com/reel/1214820583566477","https://www.facebook.com/reel/1441509334360892","https://www.facebook.com/reel/776231774920779","https://www.facebook.com/reel/820879367634081","https://www.facebook.com/reel/886321090780024","https://www.facebook.com/reel/1471299651086312","https://www.facebook.com/reel/1180373643909785","https://www.facebook.com/reel/1421844102926780","https://www.facebook.com/reel/847389474993949","https://www.facebook.com/reel/2152868698814476","https://www.facebook.com/reel/1262673359130061","https://www.facebook.com/reel/1235302411416691","https://www.facebook.com/reel/929259532853808","https://www.facebook.com/reel/1260646919495032"];
+          new Chart(ctx, {
+              type: 'line',
+              data: {
+                  labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157],
+                  datasets: [{
+                      label: 'View Count', data: [15,20,13,15,18,20,29,18,16,29,22,19,26,28,133,64,22,34,37,34,64,53,65,42,54,64,64,64,50,93,72,101,78,97,89,93,98,75,120,2500,138,175,70,68,217,127,23000,21000,202,140,74,987,238,4900,3800,681,9300,1000,20000,2100,370,892,2100,11000,11000,20000,3900,11000,16000,11000,1800,3500,417,290,1700,1000,1000,4800,407,2500,9000,532,1400,3500,115,2000,549,2600,14000,1200,2300,2000,970,1000,263,3400,40000,2700,3400,1000,6800,3900,2600,1500,940,929,7600,602,412,8500,84000,4500,254,568,16000,377,37000,5200,3300,11000,411,11000,12000,337,12000,698,8100,1600,1600,13000,204000,564,509,7600,8000,3400,2000,1900,1700,3300,1000,190,3800,2500,1500,2800,3000,228,118,556,25000,70,962,1700,3700,68,12000],
+                      borderColor: '#0866FF', backgroundColor: 'rgba(8, 102, 255, 0.1)',
+                      borderWidth: 2, pointRadius: 4, pointHoverRadius: 7,
+                      pointHoverBackgroundColor: '#31A24C', fill: true, tension: 0.2
+                  }]
+              },
+              options: {
+                  responsive: true, interaction: { mode: 'index', intersect: false },
+                  onClick: (e, activeEls) => {
+                      if (activeEls.length > 0) window.open(chartUrls[activeEls[0].index], '_blank');
+                  },
+                  plugins: { tooltip: { callbacks: { label: function(context) { return context.parsed.y.toLocaleString() + ' views'; } } } },
+                  scales: {
+                      x: { title: { display: true, text: 'Upload Order' } },
+                      y: { type: 'logarithmic', title: { display: true, text: 'Total Views' } }
+                  }
+              }
+          });
+        </script>
+      </body>
+      </html>
+    
